@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service | VDocs</title>
+    <title>Terms of Service | VDocs - Personal Health Record Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -16,20 +16,35 @@
             extend: {
               colors: {
                 primary: {
-                  50: '#f0f9ff',
-                  100: '#e0f2fe',
-                  200: '#bae6fd',
-                  300: '#7dd3fc',
-                  400: '#38bdf8',
-                  500: '#0ea5e9',
-                  600: '#0284c7',
-                  700: '#0369a1',
-                  800: '#075985',
-                  900: '#0c4a6e',
+                  50: '#f0f7ff',
+                  100: '#e0f0ff',
+                  200: '#bae0ff',
+                  300: '#7cc4ff',
+                  400: '#36a2ff',
+                  500: '#0d8aff',
+                  600: '#0066cc',
+                  700: '#0052a3',
+                  800: '#003d7a',
+                  900: '#002952',
+                },
+                secondary: {
+                  50: '#f5f9ff',
+                  100: '#e6f0ff',
+                  200: '#cce0ff',
+                  300: '#99c2ff',
+                  400: '#6699ff',
+                  500: '#3366ff',
+                  600: '#1a4dcc',
+                  700: '#003399',
+                  800: '#002266',
+                  900: '#001133',
                 }
               },
               fontFamily: {
                 sans: ['Inter', 'sans-serif']
+              },
+              backgroundImage: {
+                'health-gradient': 'linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%)'
               }
             }
           }
@@ -38,10 +53,11 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Light background for policy pages */
+            background-color: #f8fafc;
+            color: #1f2937;
         }
         .policy-hero {
-            background: linear-gradient(135deg, rgba(14,165,233,0.08) 0%, rgba(34,197,94,0.09) 100%);
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);
             position: relative;
             overflow: hidden;
         }
@@ -52,16 +68,16 @@
             right: -18%;
             width: 65%;
             height: 170%;
-            background: radial-gradient(circle, rgba(14,165,233,0.13) 0%, rgba(14,165,233,0) 70%);
+            background: radial-gradient(circle, rgba(13, 138, 255, 0.1) 0%, rgba(13, 138, 255, 0) 70%);
             z-index: 0;
         }
         .policy-section {
-            background: #ffffff; /* White background for each section */
+            background: #ffffff;
             padding: 2.5rem;
-            border-radius: 1.25rem;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-            margin-bottom: 2.5rem; /* Space between sections */
-            
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(13, 138, 255, 0.1);
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -70,589 +86,770 @@
             opacity: 1;
             transform: translateY(0);
         }
+        .card-hover:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-color: rgba(13, 138, 255, 0.2);
+        }
+        .nav-blur {
+            backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.85);
+        }
         .check-icon {
-            color: #0ea5e9;
-            background: #e0f2fe;
+            color: #0d8aff;
+            background: #e0f0ff;
             border-radius: 50%;
-            width: 2rem;
-            height: 2rem;
+            width: 1.75rem;
+            height: 1.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
-            margin-right: .75rem;
+            font-size: 0.9rem;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
         }
-        /* Custom styles from original t.txt for list items to ensure proper spacing if .prose isn't overriding */
+        .icon-blue {
+            background: linear-gradient(135deg, #0d8aff 0%, #3366ff 100%);
+        }
+        .icon-green {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        .icon-purple {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+        .icon-orange {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+        .icon-teal {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+        }
         .prose ul li {
-            margin-bottom: 0.5rem; /* Adjust as needed */
+            margin-bottom: 0.5rem;
         }
         .prose ul {
-            padding-left: 1.5rem; /* Adjust as needed for list indentation */
+            padding-left: 1.5rem;
+        }
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(13, 138, 255, 0.1);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0d8aff 0%, #0066cc 100%);
+            color: white;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.2s ease;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+            box-shadow: 0 4px 6px -1px rgba(0, 102, 204, 0.2);
+        }
+        .btn-outline {
+            border: 1px solid #0d8aff;
+            color: #0d8aff;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.2s ease;
+        }
+        .btn-outline:hover {
+            background-color: #f0f7ff;
+        }
+        .highlight-box {
+            border-left: 4px solid #0d8aff;
+            background-color: #f0f7ff;
+            padding: 1rem 1.5rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .warning-box {
+            border-left: 4px solid #f59e0b;
+            background-color: #fffbeb;
+            padding: 1rem 1.5rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .legal-box {
+            border-left: 4px solid #8b5cf6;
+            background-color: #faf5ff;
+            padding: 1rem 1.5rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0d8aff 0%, #3366ff 100%);
+            color: white;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
         }
     </style>
 </head>
-<body class="font-sans antialiased text-gray-800">
+<body class="font-sans antialiased text-gray-800 bg-health-gradient">
 
-    <header class="sticky top-0 z-50 bg-white shadow-sm" x-data="{ mobileOpen: false }">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center py-4">
-      <div class="flex items-center space-x-2">
-        <div class="w-16 h-16 rounded-lg flex items-center justify-center overflow-hidden">
-          <img src="images/logo.png" alt="VDocs Logo" class="w-full h-full object-contain">
+    <!-- Navigation -->
+    <header class="sticky-nav" x-data="{ mobileOpen: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-lg flex items-center justify-center icon-blue">
+                        <i class="fas fa-file-medical-alt text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold text-primary-800">VDocs</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-primary-600 transition duration-200">Home</a>
+                    <a href="about_us.html" class="text-gray-600 hover:text-primary-600 transition duration-200">About Us</a>
+                    <a href="index.html#features" class="text-gray-600 hover:text-primary-600 transition duration-200">Features</a>
+                    <a href="contact_us.html" class="text-gray-600 hover:text-primary-600 transition duration-200">Contact</a>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="index.html#join-waitlist" class="hidden md:inline-block btn-outline">Partner With Us</a>
+                    <a href="index.html#join-waitlist" class="btn-primary">Join Waitlist</a>
+                </div>
+                <button class="md:hidden focus:outline-none" @click="mobileOpen = !mobileOpen">
+                    <i class="fas fa-bars text-gray-600 text-xl"></i>
+                </button>
+            </div>
         </div>
-        <span class="text-xl font-bold text-primary-800 sr-only">VDocs</span>
-      </div>
-      <div class="hidden md:flex space-x-8">
-        <a href="index.html" class="text-gray-600 hover:text-primary-600 transition">Home</a>
-        <a href="about_us.html" class="text-gray-600 hover:text-primary-600 transition">About Us</a>
-        <a href="index.html#features" class="text-gray-600 hover:text-primary-600 transition">Features</a>
-        <a href="contact_us.html" class="text-gray-600 hover:text-primary-600 transition">Contact</a>
-      </div>
-      <div class="flex space-x-4">
-        <a href="index.html#join-waitlist" class="hidden md:inline-block px-4 py-2 text-primary-600 font-medium rounded-lg hover:bg-primary-50 transition">Partner With Us</a>
-        <a href="index.html#join-waitlist" class="px-4 py-2 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition">Join Waitlist</a>
-      </div>
-      <button class="md:hidden focus:outline-none" @click="mobileOpen = !mobileOpen">
-        <i class="fas fa-bars text-gray-600 text-xl"></i>
-      </button>
-    </div>
-  </div>
-  <div
-    x-show="mobileOpen"
-    x-transition:enter="transition ease-out duration-300"
-    x-transition:enter-start="opacity-0 transform -translate-y-4"
-    x-transition:enter-end="opacity-100 transform translate-y-0"
-    x-transition:leave="transition ease-in duration-200"
-    x-transition:leave-start="opacity-100 transform translate-y-0"
-    x-transition:leave-end="opacity-0 transform -translate-y-4"
-    class="md:hidden mt-2 space-y-2 pb-4 border-t pt-4"
-  >
-    <a href="index.html" class="block text-gray-700 hover:text-primary-600 px-4 py-2">Home</a>
-    <a href="about_us.html" class="block text-gray-700 hover:text-primary-600 px-4 py-2">About Us</a>
-    <a href="index.html#features" class="block text-gray-700 hover:text-primary-600 px-4 py-2">Features</a>
-    <a href="contact_us.html" class="block text-gray-700 hover:text-primary-600 px-4 py-2">Contact</a>
-    <a href="index.html#join-waitlist" class="block text-primary-600 font-medium px-4 py-2">Partner With Us</a>
-    <a href="index.html#join-waitlist" class="block text-white bg-primary-600 hover:bg-primary-700 px-3 py-2 rounded mx-4 mt-2">Join Waitlist</a>
-  </div>
-</header>
+        <div
+            x-show="mobileOpen"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 transform -translate-y-4"
+            x-transition:enter-end="opacity-100 transform translate-y-0"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 transform translate-y-0"
+            x-transition:leave-end="opacity-0 transform -translate-y-4"
+            class="md:hidden mt-2 space-y-2 pb-4 border-t border-gray-200 pt-4 bg-white"
+        >
+            <a href="index.html" class="block text-gray-700 hover:text-primary-600 px-4 py-2 transition duration-200">Home</a>
+            <a href="about_us.html" class="block text-gray-700 hover:text-primary-600 px-4 py-2 transition duration-200">About Us</a>
+            <a href="index.html#features" class="block text-gray-700 hover:text-primary-600 px-4 py-2 transition duration-200">Features</a>
+            <a href="contact_us.html" class="block text-gray-700 hover:text-primary-600 px-4 py-2 transition duration-200">Contact</a>
+            <a href="index.html#join-waitlist" class="block text-primary-600 font-medium px-4 py-2">Partner With Us</a>
+            <a href="index.html#join-waitlist" class="block text-white bg-primary-600 hover:bg-primary-700 px-3 py-2 rounded mx-4 mt-2 transition duration-200">Join Waitlist</a>
+        </div>
+    </header>
 
-    <section class="policy-hero py-20 md:py-28 relative">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Hero Section -->
+    <section class="policy-hero py-16 md:py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center">
                 <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight animate__animated animate__fadeInDown">
                     Terms of Service
                 </h1>
                 <p class="mt-6 text-lg text-gray-700 max-w-3xl mx-auto animate__animated animate__fadeIn animate__delay-1s">
                     Last updated: <span id="currentDate"></span><br>
-                    <span>
-                      Please read these terms carefully before using our platform.
+                    <span class="text-gray-600">
+                        Please read these terms carefully before using our platform.
                     </span>
                 </p>
+                <div class="mt-8 flex justify-center space-x-4">
+                    <a href="#acceptance" class="btn-primary animate__animated animate__fadeInUp animate__delay-2s">
+                        <i class="fas fa-file-contract mr-2"></i>Quick Overview
+                    </a>
+                    <a href="#contact" class="btn-outline animate__animated animate__fadeInUp animate__delay-2s">
+                        <i class="fas fa-question-circle mr-2"></i>Questions?
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row mt-12 mb-16">
-        <main class="w-full">
-            
-            <section class="policy-section animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-                <h2 class="text-2xl font-bold text-primary-800 mb-4">Acceptance of Terms</h2>
-                <div class="prose prose-gray max-w-none">
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        By accessing or using VDocs at
-                        <a href="https://vdocs.in" class="text-primary-600 hover:underline">https://vdocs.in</a>, 
-                        you agree to be bound by these Terms of Service ("Terms"). [cite: 12] These Terms constitute a legally 
-                        binding agreement between you and VDocs. [cite: 13]
-                    </p>
-                    <p class="text-gray-700 leading-relaxed">
-                        If you do not agree to these Terms, you must not access or use our Service. [cite: 14] Your continued use of the platform constitutes acceptance of any updates to these Terms. [cite: 15, 16]
-                    </p>
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar Navigation -->
+            <aside class="lg:w-1/4 mb-8 lg:mb-0">
+                <div class="sticky top-24 bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+                    <h3 class="font-semibold text-lg text-gray-900 mb-4">Contents</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#acceptance" class="text-primary-600 hover:text-primary-800 transition duration-200 block py-1">1. Acceptance of Terms</a></li>
+                        <li><a href="#eligibility" class="text-gray-700 hover:text-primary-600 transition duration-200 block py-1">2. Eligibility & Account</a></li>
+                        <li><a href="#platform" class="text-gray-700 hover:text-primary-600 transition duration-200 block py-1">3. Platform Overview</a></li>
+                        <li><a href="#disclaimer" class="text-gray-700 hover:text-primary-600 transition duration-200 block py-1">4. Medical Disclaimer</a></li>
+                        <li><a href="#responsibilities" class="text-gray-700 hover:text-primary-600 transition duration-200 block py-1">5. User Responsibilities</a></li>
+                        <li><a href="#ip" class="text-gray-700 hover:text-primary-600 transition duration-200 block py-1">6. Intellectual Property</a></li>
+                        <li><a href="#privacy" class="text-gray-700 hover:text-primary-600 transition duration-200 block py-1">7. Privacy & Security</a></li>
+                        <li><a href="#availability" class="text-gray-700 hover:text-primary-600 transition duration-200 block py-1">8. Service Availability</a></li>
+                        <li><a href="#third-party" class="text-gray-700 hover:text-primary-600 transition duration-200 block py-1">9. Third-party Services</a></li>
+                        <li><a href="#termination" class="text-gray-700 hover:text-primary-600 transition duration-200 block py-1">10. Termination</a></li>
+                        <li><a href="#liability" class="text-gray-700 hover:text-primary-600 transition duration-200 block py-1">11. Limitation of Liability</a></li>
+                        <li><a href="#indemnification" class="text-gray-700 hover:text-primary-600 transition duration-200 block py-1">12. Indemnification</a></li>
+                        <li><a href="#governing-law" class="text-gray-700 hover:text-primary-600 transition duration-200 block py-1">13. Governing Law</a></li>
+                        <li><a href="#contact" class="text-gray-700 hover:text-primary-600 transition duration-200 block py-1">14. Contact Information</a></li>
+                    </ul>
+                    <div class="mt-6 pt-4 border-t border-gray-200">
+                        <a href="privacy-policy.html" class="text-primary-600 hover:text-primary-800 text-sm font-medium flex items-center">
+                            <i class="fas fa-shield-alt mr-2"></i>Privacy Policy
+                        </a>
+                    </div>
                 </div>
-            </section>
+            </aside>
 
-            <section class="policy-section animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-                <h2 class="text-2xl font-bold text-primary-800 mb-4">Eligibility & Account Use</h2>
-                <div class="space-y-4">
-                    <div class="bg-primary-50 border-l-4 border-primary-400 p-4 rounded-lg">
-                        <h3 class="text-lg font-medium text-primary-800 mb-2">Age Requirements</h3>
-                        <p class="text-sm text-primary-700">
-                            You must be at least 18 years of age to create an account and use VDocs independently. [cite: 18] Users under 18 may use the platform only under the supervision and consent of a parent or legal guardian. [cite: 19, 20]
+            <!-- Main Content -->
+            <main class="lg:w-3/4">
+                <!-- Acceptance of Terms -->
+                <section id="acceptance" class="policy-section card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                    <div class="flex items-start mb-4">
+                        <div class="step-number">1</div>
+                        <h2 class="text-2xl font-bold text-primary-800">Acceptance of Terms</h2>
+                    </div>
+                    <div class="prose prose-gray max-w-none">
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            By accessing or using VDocs at
+                            <a href="https://vdocs.in" class="text-primary-600 hover:underline">https://vdocs.in</a>, 
+                            you agree to be bound by these Terms of Service ("Terms"). These Terms constitute a legally 
+                            binding agreement between you and VDocs.
+                        </p>
+                        <div class="highlight-box mt-4">
+                            <p class="text-sm text-primary-700">
+                                <strong>Important:</strong> If you do not agree to these Terms, you must not access or use our Service. Your continued use of the platform constitutes acceptance of any updates to these Terms.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Eligibility & Account Use -->
+                <section id="eligibility" class="policy-section card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                    <div class="flex items-start mb-4">
+                        <div class="step-number">2</div>
+                        <h2 class="text-2xl font-bold text-primary-800">Eligibility & Account Use</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-primary-50 border-l-4 border-primary-400 p-4 rounded-lg">
+                            <h3 class="text-lg font-medium text-primary-800 mb-2">Age Requirements</h3>
+                            <p class="text-sm text-primary-700">
+                                You must be at least 18 years of age to create an account and use VDocs independently. Users under 18 may use the platform only under the supervision and consent of a parent or legal guardian.
+                            </p>
+                        </div>
+                        <div class="space-y-3">
+                            <h3 class="text-xl font-medium text-gray-800">Account Responsibilities</h3>
+                            <ul class="text-gray-700 space-y-2">
+                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>You are responsible for maintaining the confidentiality of your login credentials</li>
+                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>You must provide accurate and complete information during account creation</li>
+                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>You are liable for all activities that occur under your account</li>
+                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>You must notify us immediately of any unauthorized use of your account</li>
+                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>One person or entity may maintain only one account unless explicitly authorized</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Platform Overview -->
+                <section id="platform" class="policy-section card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+                    <div class="flex items-start mb-4">
+                        <div class="step-number">3</div>
+                        <h2 class="text-2xl font-bold text-primary-800">Platform Overview</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-gray-700 leading-relaxed">
+                            VDocs is a digital health platform that provides the following services:
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-primary-50 p-4 rounded-lg">
+                                <h4 class="font-medium text-primary-800 mb-2">Core Services</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Secure storage of medical documents and reports</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>AI-powered analysis and insights of medical data</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Secure sharing with healthcare providers and authorized parties</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Digital organization and management of health records</li>
+                                </ul>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-medium text-green-800 mb-2">Access Methods</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Direct user registration and login</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Access through partnered diagnostic labs and clinics</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>OTP-based authentication for secure access</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Multi-device compatibility and synchronization</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- No Medical Advice Disclaimer -->
+                <section id="disclaimer" class="policy-section card-hover animate__animated animate__fadeInUp" style="animation-delay: 0.8s;">
+                    <div class="flex items-start mb-4">
+                        <div class="step-number">4</div>
+                        <h2 class="text-2xl font-bold text-primary-800">No Medical Advice Disclaimer</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="warning-box">
+                            <h3 class="text-lg font-medium text-amber-800 mb-3">Important Medical Disclaimer</h3>
+                            <div class="space-y-3 text-amber-700">
+                                <p class="font-medium">
+                                    VDocs is NOT a medical service provider and does NOT offer medical advice, diagnosis, or treatment.
+                                </p>
+                                <ul class="list-disc list-inside space-y-1 text-sm">
+                                    <li>Our AI analysis provides informational insights only and is not a substitute for professional medical advice</li>
+                                    <li>All AI-generated insights must be reviewed and interpreted by qualified healthcare professionals</li>
+                                    <li>Users should always consult with licensed medical practitioners for medical decisions</li>
+                                    <li>VDocs does not replace the need for regular medical check-ups or professional consultations</li>
+                                    <li>In case of medical emergencies, contact emergency services immediately</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">
+                            By using our platform, you acknowledge that you understand these limitations and will not rely 
+                            solely on VDocs for medical decisions. We strongly encourage you to maintain regular communication 
+                            with your healthcare providers.
                         </p>
                     </div>
-                    <div class="space-y-3">
-                        <h3 class="text-xl font-medium text-gray-800">Account Responsibilities</h3>
-                        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
-                            <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>You are responsible for maintaining the confidentiality of your login credentials [cite: 21]</li>
-                            <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>You must provide accurate and complete information during account creation [cite: 21]</li>
-                            <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>You are liable for all activities that occur under your account [cite: 22]</li>
-                            <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>You must notify us immediately of any unauthorized use of your account [cite: 22]</li>
-                            <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>One person or entity may maintain only one account unless explicitly authorized [cite: 23]</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+                </section>
 
-            <section class="policy-section animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
-                <h2 class="text-2xl font-bold text-primary-800 mb-4">Platform Overview</h2>
-                <div class="space-y-4">
-                    <p class="text-gray-700 leading-relaxed">
-                        VDocs is a digital health platform that provides the following services: [cite: 25, 26]
-                    </p>
-                    <div class="grid md:grid-cols-2 gap-4">
+                <!-- User Responsibilities -->
+                <section id="responsibilities" class="policy-section card-hover animate__animated animate__fadeInUp" style="animation-delay: 1.0s;">
+                    <div class="flex items-start mb-4">
+                        <div class="step-number">5</div>
+                        <h2 class="text-2xl font-bold text-primary-800">User Responsibilities</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="border border-green-200 p-4 rounded-lg">
+                                <h4 class="font-medium text-green-800 mb-2">Permitted Uses</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Upload legitimate medical documents and reports</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Use the platform for personal health record management</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Share documents with authorized healthcare providers</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Access AI insights for informational purposes</li>
+                                </ul>
+                            </div>
+                            <div class="border border-orange-200 p-4 rounded-lg">
+                                <h4 class="font-medium text-orange-800 mb-2">Prohibited Uses</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Upload false, fraudulent, or non-medical documents</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Share another person's medical data without consent</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Use the platform for commercial purposes without authorization</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Attempt to reverse-engineer our AI systems</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Violate any applicable laws or regulations</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">Data Accuracy</h4>
+                            <p class="text-sm text-gray-700">
+                                You are responsible for ensuring the accuracy and legitimacy of all documents and information 
+                                you upload to VDocs. We rely on users to provide authentic medical documents for our AI analysis 
+                                to be meaningful and helpful.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Intellectual Property & Content Rights -->
+                <section id="ip" class="policy-section card-hover animate__animated animate__fadeInUp" style="animation-delay: 1.2s;">
+                    <div class="flex items-start mb-4">
+                        <div class="step-number">6</div>
+                        <h2 class="text-2xl font-bold text-primary-800">Intellectual Property & Content Rights</h2>
+                    </div>
+                    <div class="space-y-4">
                         <div class="bg-primary-50 p-4 rounded-lg">
-                            <h4 class="font-medium text-primary-800 mb-2">Core Services</h4>
-                            <ul class="text-sm text-gray-700 space-y-1">
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Secure storage of medical documents and reports [cite: 27]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>AI-powered analysis and insights of medical data [cite: 28]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Secure sharing with healthcare providers and authorized parties [cite: 28]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Digital organization and management of health records [cite: 29]</li>
-                            </ul>
-                        </div>
-                        <div class="bg-green-50 p-4 rounded-lg">
-                            <h4 class="font-medium text-green-800 mb-2">Access Methods</h4>
-                            <ul class="text-sm text-gray-700 space-y-1">
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Direct user registration and login [cite: 31]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Access through partnered diagnostic labs and clinics [cite: 31]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>OTP-based authentication for secure access [cite: 31]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Multi-device compatibility and synchronization [cite: 32]</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="policy-section animate__animated animate__fadeInUp" style="animation-delay: 0.8s;">
-                <h2 class="text-2xl font-bold text-primary-800 mb-4">No Medical Advice Disclaimer</h2>
-                <div class="space-y-4">
-                    <div class="bg-amber-50 border border-amber-200 p-6 rounded-lg">
-                        <h3 class="text-lg font-medium text-amber-800 mb-3">⚠️ Important Medical Disclaimer</h3>
-                        <div class="space-y-3 text-amber-700">
-                            <p class="font-medium">
-                                VDocs is NOT a medical service provider and does NOT offer medical advice, diagnosis, or treatment. [cite: 36, 37]
+                            <h3 class="text-lg font-medium text-primary-800 mb-2">Your Content Ownership</h3>
+                            <p class="text-gray-700 text-sm leading-relaxed">
+                                You retain full ownership of all medical documents, reports, and personal information you upload to VDocs.
+                                We do not claim ownership of your medical data or personal content.
                             </p>
-                            <ul class="list-disc list-inside space-y-1 text-sm">
-                                <li>Our AI analysis provides informational insights only and is not a substitute for professional medical advice [cite: 37]</li>
-                                <li>All AI-generated insights must be reviewed and interpreted by qualified healthcare professionals [cite: 38]</li>
-                                <li>Users should always consult with licensed medical practitioners for medical decisions [cite: 38]</li>
-                                <li>VDocs does not replace the need for regular medical check-ups or professional consultations [cite: 39]</li>
-                                <li>In case of medical emergencies, contact emergency services immediately [cite: 39]</li>
+                        </div>
+                        <div class="space-y-3">
+                            <h3 class="text-lg font-medium text-gray-800">License to VDocs</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                By uploading content to VDocs, you grant us a limited, non-exclusive, non-transferable license to:
+                            </p>
+                            <ul class="text-gray-700 space-y-1">
+                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Store and process your documents securely on our platform</li>
+                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Provide AI analysis and insights based on your uploaded content</li>
+                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Display your documents and analysis results to you and authorized parties</li>
+                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Use aggregated and anonymized data to improve our AI capabilities</li>
                             </ul>
+                            <p class="text-sm text-gray-600 mt-3">
+                                This license terminates when you delete your content or close your account, except for aggregated 
+                                anonymized data that cannot be traced back to you.
+                            </p>
+                        </div>
+                        <div class="legal-box">
+                            <h3 class="text-lg font-medium text-purple-800 mb-2">VDocs Platform Rights</h3>
+                            <p class="text-gray-700 text-sm leading-relaxed">
+                                VDocs, including our software, AI algorithms, user interface, and platform design, is protected by 
+                                intellectual property laws. You may not copy, modify, or reverse-engineer any part of our platform.
+                            </p>
                         </div>
                     </div>
-                    <p class="text-gray-700 leading-relaxed">
-                        By using our platform, you acknowledge that you understand these limitations and will not rely 
-                        solely on VDocs for medical decisions. [cite: 41] We strongly encourage you to maintain regular communication 
-                        with your healthcare providers. [cite: 42, 43]
-                    </p>
-                </div>
-            </section>
+                </section>
 
-            <section class="policy-section animate__animated animate__fadeInUp" style="animation-delay: 1.0s;">
-                <h2 class="text-2xl font-bold text-primary-800 mb-4">User Responsibilities</h2>
-                <div class="space-y-4">
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div class="border border-green-200 p-4 rounded-lg">
-                            <h4 class="font-medium text-green-800 mb-2">Permitted Uses</h4>
-                            <ul class="text-sm text-gray-700 space-y-1">
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Upload legitimate medical documents and reports [cite: 46]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Use the platform for personal health record management [cite: 46]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Share documents with authorized healthcare providers [cite: 46]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Access AI insights for informational purposes [cite: 47]</li>
-                            </ul>
-                        </div>
-                        <div class="border border-orange-200 p-4 rounded-lg">
-                            <h4 class="font-medium text-orange-800 mb-2">Prohibited Uses</h4>
-                            <ul class="text-sm text-gray-700 space-y-1">
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Upload false, fraudulent, or non-medical documents [cite: 49]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Share another person's medical data without consent [cite: 49]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Use the platform for commercial purposes without authorization [cite: 50]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Attempt to reverse-engineer our AI systems [cite: 50]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Violate any applicable laws or regulations [cite: 51]</li>
-                            </ul>
-                        </div>
+                <!-- Privacy & Security -->
+                <section id="privacy" class="policy-section card-hover animate__animated animate__fadeInUp" style="animation-delay: 1.4s;">
+                    <div class="flex items-start mb-4">
+                        <div class="step-number">7</div>
+                        <h2 class="text-2xl font-bold text-primary-800">Privacy & Security</h2>
                     </div>
-                    <div class="bg-gray-50 p-4 rounded-lg">
-                        <h4 class="font-medium text-gray-800 mb-2">Data Accuracy</h4>
-                        <p class="text-sm text-gray-700">
-                            You are responsible for ensuring the accuracy and legitimacy of all documents and information 
-                            you upload to VDocs. [cite: 53] We rely on users to provide authentic medical documents for our AI analysis 
-                            to be meaningful and helpful. [cite: 54, 55]
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="policy-section animate__animated animate__fadeInUp" style="animation-delay: 1.2s;">
-                <h2 class="text-2xl font-bold text-primary-800 mb-4">Intellectual Property & Content Rights</h2>
-                <div class="space-y-4">
-                    <div class="bg-primary-50 p-4 rounded-lg">
-                        <h3 class="text-lg font-medium text-primary-800 mb-2">Your Content Ownership</h3>
-                        <p class="text-gray-700 text-sm leading-relaxed">
-                            You retain full ownership of all medical documents, reports, and personal information you upload to VDocs. [cite: 57, 58]
-                            We do not claim ownership of your medical data or personal content. [cite: 58, 59]
-                        </p>
-                    </div>
-                    <div class="space-y-3">
-                        <h3 class="text-lg font-medium text-gray-800">License to VDocs</h3>
+                    <div class="space-y-4">
                         <p class="text-gray-700 leading-relaxed">
-                            By uploading content to VDocs, you grant us a limited, non-exclusive, non-transferable license to: [cite: 60]
+                            Your privacy and data security are fundamental to our service. We implement industry-standard security 
+                            measures to protect your sensitive medical information.
                         </p>
-                        <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
-                            <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Store and process your documents securely on our platform [cite: 61]</li>
-                            <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Provide AI analysis and insights based on your uploaded content [cite: 61]</li>
-                            <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Display your documents and analysis results to you and authorized parties [cite: 62]</li>
-                            <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Use aggregated and anonymized data to improve our AI capabilities (as detailed in our Privacy Policy) [cite: 62, 63]</li>
-                        </ul>
-                        <p class="text-sm text-gray-600 mt-3">
-                            This license terminates when you delete your content or close your account, except for aggregated 
-                            anonymized data that cannot be traced back to you. [cite: 64, 65]
-                        </p>
-                    </div>
-                    <div class="bg-purple-50 p-4 rounded-lg">
-                        <h3 class="text-lg font-medium text-purple-800 mb-2">VDocs Platform Rights</h3>
-                        <p class="text-gray-700 text-sm leading-relaxed">
-                            VDocs, including our software, AI algorithms, user interface, and platform design, is protected by 
-                            intellectual property laws. [cite: 66, 67] You may not copy, modify, or reverse-engineer any part of our platform. [cite: 67, 68]
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="policy-section animate__animated animate__fadeInUp" style="animation-delay: 1.4s;">
-                <h2 class="text-2xl font-bold text-primary-800 mb-4">Privacy & Security</h2>
-                <div class="space-y-4">
-                    <p class="text-gray-700 leading-relaxed">
-                        Your privacy and data security are fundamental to our service. [cite: 70] We implement industry-standard security 
-                        measures to protect your sensitive medical information. [cite: 71, 72]
-                    </p>
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <div class="text-center p-4 bg-gray-50 rounded-lg">
-                            <div class="text-2xl mb-2">🔐</div>
-                            <h4 class="font-medium text-gray-800 mb-2">Encryption</h4>
-                            <p class="text-xs text-gray-600">End-to-end encryption for all data transmission and storage</p>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="text-center p-4 bg-gray-50 rounded-lg">
+                                <div class="text-2xl mb-2 text-primary-600">🔐</div>
+                                <h4 class="font-medium text-gray-800 mb-2">Encryption</h4>
+                                <p class="text-xs text-gray-600">End-to-end encryption for all data transmission and storage</p>
+                            </div>
+                            <div class="text-center p-4 bg-gray-50 rounded-lg">
+                                <div class="text-2xl mb-2 text-primary-600">🛡️</div>
+                                <h4 class="font-medium text-gray-800 mb-2">Access Control</h4>
+                                <p class="text-xs text-gray-600">Multi-factor authentication and role-based access controls</p>
+                            </div>
+                            <div class="text-center p-4 bg-gray-50 rounded-lg">
+                                <div class="text-2xl mb-2 text-primary-600">📋</div>
+                                <h4 class="font-medium text-gray-800 mb-2">Compliance</h4>
+                                <p class="text-xs text-gray-600">Adherence to Indian data protection and healthcare regulations</p>
+                            </div>
                         </div>
-                        <div class="text-center p-4 bg-gray-50 rounded-lg">
-                            <div class="text-2xl mb-2">🛡️</div>
-                            <h4 class="font-medium text-gray-800 mb-2">Access Control</h4>
-                            <p class="text-xs text-gray-600">Multi-factor authentication and role-based access controls</p>
-                        </div>
-                        <div class="text-center p-4 bg-gray-50 rounded-lg">
-                            <div class="text-2xl mb-2">📋</div>
-                            <h4 class="font-medium text-gray-800 mb-2">Compliance</h4>
-                            <p class="text-xs text-gray-600">Adherence to Indian data protection and healthcare regulations</p>
-                        </div>
-                    </div>
-                    <p class="text-sm text-gray-600 bg-primary-50 p-3 rounded">
-                        For detailed information about how we collect, use, and protect your data, please review our
-                        <a href="privacy-policy.html" class="text-primary-600 hover:underline">Privacy Policy</a>. [cite: 78, 79]
-                    </p>
-                </div>
-            </section>
-
-            <section class="policy-section animate__animated animate__fadeInUp" style="animation-delay: 1.6s;">
-                <h2 class="text-2xl font-bold text-primary-800 mb-4">Service Availability & Downtime</h2>
-                <div class="space-y-4">
-                    <p class="text-gray-700 leading-relaxed">
-                        While we strive to maintain high service availability, [cite: 81] we cannot guarantee uninterrupted access to VDocs. [cite: 81]
-                        Service interruptions may occur due to: [cite: 81]
-                    </p>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <h4 class="font-medium text-gray-800 mb-2">Planned Maintenance</h4>
-                            <ul class="text-sm text-gray-700 space-y-1 list-disc list-inside">
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>System updates and security patches [cite: 83]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Infrastructure improvements [cite: 83]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Feature deployments [cite: 84]</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-medium text-gray-800 mb-2">Unplanned Outages</h4>
-                            <ul class="text-sm text-gray-700 space-y-1 list-disc list-inside">
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Technical failures or system errors [cite: 85]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Third-party service disruptions [cite: 86]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Security incidents requiring immediate action [cite: 86]</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="bg-primary-50 border-l-4 border-primary-400 p-4 rounded-lg">
-                        <p class="text-sm text-primary-700">
-                            <strong>Emergency Access:</strong> In case of urgent medical needs and platform unavailability, 
-                            ensure you have alternative access to critical medical information through your healthcare providers. [cite: 88, 89]
+                        <p class="text-sm text-gray-600 bg-primary-50 p-3 rounded">
+                            For detailed information about how we collect, use, and protect your data, please review our
+                            <a href="privacy-policy.html" class="text-primary-600 hover:underline font-medium">Privacy Policy</a>.
                         </p>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <section class="policy-section animate__animated animate__fadeInUp" style="animation-delay: 1.8s;">
-                <h2 class="text-2xl font-bold text-primary-800 mb-4">Third-party Services</h2>
-                <div class="space-y-4">
-                    <p class="text-gray-700 leading-relaxed">
-                        VDocs may integrate with or provide links to third-party services, including diagnostic laboratories, 
-                        healthcare providers, and other medical service platforms. [cite: 91, 92]
-                    </p>
-                    <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg">
-                        <h4 class="font-medium text-gray-800 mb-2">Third-party Disclaimer</h4>
-                        <ul class="text-sm text-gray-700 space-y-2">
-                            <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>We are not responsible for the availability, accuracy, or quality of third-party services [cite: 93]</li>
-                            <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Third-party services have their own terms of service and privacy policies [cite: 93]</li>
-                            <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>We do not endorse or guarantee the services provided by third-party partners [cite: 94]</li>
-                            <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Any disputes with third-party services must be resolved directly with those providers [cite: 94]</li>
-                        </ul>
+                <!-- Service Availability & Downtime -->
+                <section id="availability" class="policy-section card-hover animate__animated animate__fadeInUp" style="animation-delay: 1.6s;">
+                    <div class="flex items-start mb-4">
+                        <div class="step-number">8</div>
+                        <h2 class="text-2xl font-bold text-primary-800">Service Availability & Downtime</h2>
                     </div>
-                    <p class="text-sm text-gray-600">
-                        When using integrated third-party services, you acknowledge that you are subject to their respective 
-                        terms and conditions in addition to these Terms of Service. [cite: 96, 97]
-                    </p>
-                </div>
-            </section>
-
-            <section class="policy-section animate__animated animate__fadeInUp" style="animation-delay: 2.0s;">
-                <h2 class="text-2xl font-bold text-primary-800 mb-4">Termination & Suspension</h2>
-                <div class="space-y-4">
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div class="border border-primary-200 p-4 rounded-lg">
-                            <h4 class="font-medium text-primary-800 mb-2">Your Right to Terminate</h4>
-                            <p class="text-sm text-gray-700 mb-3">
-                                You may terminate your account at any time by contacting our support team or using the account 
-                                deletion feature in your dashboard. [cite: 100, 101]
-                            </p>
-                            <p class="text-xs text-gray-600">
-                                Upon termination, your data will be handled according to our data retention policies outlined 
-                                in our Privacy Policy. [cite: 102, 103]
-                            </p>
-                        </div>
-                        <div class="border border-orange-200 p-4 rounded-lg">
-                            <h4 class="font-medium text-orange-800 mb-2">Our Right to Suspend/Terminate</h4>
-                            <p class="text-sm text-gray-700 mb-3">
-                                We may suspend or terminate your account immediately if you: [cite: 104, 105]
-                            </p>
-                            <ul class="text-xs text-gray-700 space-y-1 list-disc list-inside">
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Violate these Terms of Service [cite: 105, 106]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Engage in fraudulent or illegal activities [cite: 106]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Compromise platform security [cite: 106]</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Abuse our AI systems or attempt unauthorized access [cite: 107]</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="bg-primary-50 p-4 rounded-lg">
-                        <h4 class="font-medium text-primary-800 mb-2">Effect of Termination</h4>
-                        <p class="text-sm text-gray-700">
-                            Upon account termination, your access to the platform will be immediately revoked. [cite: 109] We will retain 
-                            your data for the period specified in our Privacy Policy, after which it will be permanently deleted 
-                            unless required to be retained by law. [cite: 110, 111]
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="policy-section animate__animated animate__fadeInUp" style="animation-delay: 2.2s;">
-                <h2 class="text-2xl font-bold text-primary-800 mb-4">Limitation of Liability</h2>
-                <div class="space-y-4">
-                    <div class="bg-slate-50 border border-slate-200 p-6 rounded-lg">
-                        <h3 class="text-lg font-medium text-slate-800 mb-3">Important Legal Limitations</h3>
-                        <div class="space-y-3 text-sm text-slate-700">
-                            <p>
-                                <strong>To the maximum extent permitted by Indian law,</strong> VDocs and its affiliates, officers, 
-                                employees, and agents shall not be liable for: [cite: 114, 115]
-                            </p>
-                            <ul class="list-disc list-inside space-y-1 ml-4">
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Any indirect, incidental, special, consequential, or punitive damages </li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Loss of profits, data, use, goodwill, or other intangible losses </li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Damages resulting from medical decisions made based on AI insights </li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Unauthorized access to or alteration of your transmissions or data </li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Service interruptions or delays </li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Third-party content, services, or conduct </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="bg-primary-50 p-4 rounded-lg">
-                        <h4 class="font-medium text-primary-800 mb-2">Maximum Liability</h4>
-                        <p class="text-sm text-gray-700">
-                            Our total liability to you for any and all claims arising from or related to the use of VDocs 
-                            shall not exceed the amount you have paid us in the twelve (12) months preceding the claim, 
-                            or ₹10,000, whichever is lower.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="policy-section animate__animated animate__fadeInUp" style="animation-delay: 2.4s;">
-                <h2 class="text-2xl font-bold text-primary-800 mb-4">Indemnification</h2>
-                <div class="space-y-4">
-                    <p class="text-gray-700 leading-relaxed">
-                        You agree to indemnify, defend, and hold harmless VDocs, its affiliates, officers, directors, 
-                        employees, and agents from and against any and all claims, damages, losses, costs, and expenses 
-                        (including reasonable attorneys' fees) arising from or related to: 
-                    </p>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div class="bg-gray-50 p-4 rounded-lg">
-                            <h4 class="font-medium text-gray-800 mb-2">User Actions</h4>
-                            <ul class="text-sm text-gray-700 space-y-1 list-disc list-inside">
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Your use or misuse of the VDocs platform </li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Your violation of these Terms of Service </li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Your violation of any applicable laws or regulations </li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Content you upload or share through the platform </li>
-                            </ul>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-lg">
-                            <h4 class="font-medium text-gray-800 mb-2">Third-party Claims</h4>
-                            <ul class="text-sm text-gray-700 space-y-1 list-disc list-inside">
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Infringement of third-party intellectual property rights </li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Unauthorized sharing of medical information</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Medical decisions made based on platform insights</li>
-                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Disputes with healthcare providers or labs</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="policy-section animate__animated animate__fadeInUp" style="animation-delay: 2.6s;">
-                <h2 class="text-2xl font-bold text-primary-800 mb-4">Governing Law & Dispute Resolution</h2>
-                <div class="space-y-4">
-                    <div class="bg-primary-50 p-4 rounded-lg">
-                        <h3 class="text-lg font-medium text-primary-800 mb-2">Governing Law</h3>
+                    <div class="space-y-4">
                         <p class="text-gray-700 leading-relaxed">
-                            These Terms of Service shall be governed by and construed in accordance with the laws of India, [cite: 135]
-                            including but not limited to the Indian Contract Act, 1872, the Information Technology Act, 2000, 
-                            and other applicable Indian laws and regulations. [cite: 136]
+                            While we strive to maintain high service availability, we cannot guarantee uninterrupted access to VDocs.
+                            Service interruptions may occur due to:
                         </p>
-                    </div>
-                    <div class="space-y-3">
-                        <h3 class="text-lg font-medium text-gray-800">Dispute Resolution Process</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-start space-x-3">
-                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                                    <span class="text-sm font-medium text-green-600">1</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Direct Resolution</h4>
-                                    <p class="text-sm text-gray-700">
-                                        We encourage users to first contact our support team to resolve disputes amicably. [cite: 140, 141]
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <div class="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                                    <span class="text-sm font-medium text-primary-600">2</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Mediation</h4>
-                                    <p class="text-sm text-gray-700">
-                                        If direct resolution fails, disputes may be resolved through mediation in accordance with 
-                                        the rules of a recognized mediation center in India. [cite: 145, 146]
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                                    <span class="text-sm font-medium text-orange-600">3</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Jurisdiction</h4>
-                                    <p class="text-sm text-gray-700">
-                                        Any legal proceedings shall be subject to the exclusive jurisdiction of the competent 
-                                        courts in Bhiwadi, Rajasthan, India. 
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="policy-section animate__animated animate__fadeInUp" style="animation-delay: 2.8s;">
-                <h2 class="text-2xl font-bold text-primary-800 mb-4">Contact Information</h2>
-                <div class="space-y-4">
-                    <p class="text-gray-700 leading-relaxed">
-                        If you have any questions, concerns, or legal inquiries regarding these Terms of Service, 
-                        please contact us using the information below: [cite: 154]
-                    </p>
-                    <div class="bg-primary-50 p-6 rounded-lg">
-                        <div class="grid md:grid-cols-2 gap-6">
+                        <div class="grid md:grid-cols-2 gap-4">
                             <div>
-                                <h4 class="font-medium text-primary-800 mb-3">Legal & Compliance</h4>
-                                <div class="space-y-2 text-sm text-gray-700">
-                                    <p><strong>Email:</strong> legal@vdocs.in</p>
-                                    <p><strong>Subject Line:</strong> Terms of Service Inquiry</p>
-                                </div>
+                                <h4 class="font-medium text-gray-800 mb-2">Planned Maintenance</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>System updates and security patches</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Infrastructure improvements</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Feature deployments</li>
+                                </ul>
                             </div>
                             <div>
-                                <h4 class="font-medium text-primary-800 mb-3">General Support</h4>
-                                <div class="space-y-2 text-sm text-gray-700">
-                                    <p><strong>Email:</strong> support@vdocs.in</p>
-                                    <p><strong>Response Time:</strong> Within 48 hours</p>
-                                </div>
+                                <h4 class="font-medium text-gray-800 mb-2">Unplanned Outages</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Technical failures or system errors</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Third-party service disruptions</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Security incidents requiring immediate action</li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="mt-6 pt-4 border-t border-primary-200">
-                            <p class="text-xs text-gray-600">
-                                <strong>Business Hours:</strong> Monday to Friday, 9:00 AM to 6:00 PM (IST)
+                        <div class="bg-primary-50 border-l-4 border-primary-400 p-4 rounded-lg">
+                            <p class="text-sm text-primary-700">
+                                <strong>Emergency Access:</strong> In case of urgent medical needs and platform unavailability, 
+                                ensure you have alternative access to critical medical information through your healthcare providers.
                             </p>
                         </div>
                     </div>
-                    <div class="bg-primary-50 border-l-4 border-primary-400 p-4 rounded-lg">
-                        <p class="text-sm text-primary-700">
-                            <strong>Changes to Terms:</strong> We will notify users of significant changes to these Terms 
-                            via email or platform notifications at least 30 days before they take effect. [cite: 164, 165]
+                </section>
+
+                <!-- Third-party Services -->
+                <section id="third-party" class="policy-section card-hover animate__animated animate__fadeInUp" style="animation-delay: 1.8s;">
+                    <div class="flex items-start mb-4">
+                        <div class="step-number">9</div>
+                        <h2 class="text-2xl font-bold text-primary-800">Third-party Services</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-gray-700 leading-relaxed">
+                            VDocs may integrate with or provide links to third-party services, including diagnostic laboratories, 
+                            healthcare providers, and other medical service platforms.
+                        </p>
+                        <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">Third-party Disclaimer</h4>
+                            <ul class="text-sm text-gray-700 space-y-2">
+                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>We are not responsible for the availability, accuracy, or quality of third-party services</li>
+                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Third-party services have their own terms of service and privacy policies</li>
+                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>We do not endorse or guarantee the services provided by third-party partners</li>
+                                <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Any disputes with third-party services must be resolved directly with those providers</li>
+                            </ul>
+                        </div>
+                        <p class="text-sm text-gray-600">
+                            When using integrated third-party services, you acknowledge that you are subject to their respective 
+                            terms and conditions in addition to these Terms of Service.
                         </p>
                     </div>
-                </div>
-            </section>
+                </section>
 
-        </main>
+                <!-- Termination & Suspension -->
+                <section id="termination" class="policy-section card-hover animate__animated animate__fadeInUp" style="animation-delay: 2.0s;">
+                    <div class="flex items-start mb-4">
+                        <div class="step-number">10</div>
+                        <h2 class="text-2xl font-bold text-primary-800">Termination & Suspension</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="border border-primary-200 p-4 rounded-lg">
+                                <h4 class="font-medium text-primary-800 mb-2">Your Right to Terminate</h4>
+                                <p class="text-sm text-gray-700 mb-3">
+                                    You may terminate your account at any time by contacting our support team or using the account 
+                                    deletion feature in your dashboard.
+                                </p>
+                                <p class="text-xs text-gray-600">
+                                    Upon termination, your data will be handled according to our data retention policies outlined 
+                                    in our Privacy Policy.
+                                </p>
+                            </div>
+                            <div class="border border-orange-200 p-4 rounded-lg">
+                                <h4 class="font-medium text-orange-800 mb-2">Our Right to Suspend/Terminate</h4>
+                                <p class="text-sm text-gray-700 mb-3">
+                                    We may suspend or terminate your account immediately if you:
+                                </p>
+                                <ul class="text-xs text-gray-700 space-y-1">
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Violate these Terms of Service</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Engage in fraudulent or illegal activities</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Compromise platform security</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Abuse our AI systems or attempt unauthorized access</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="bg-primary-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-primary-800 mb-2">Effect of Termination</h4>
+                            <p class="text-sm text-gray-700">
+                                Upon account termination, your access to the platform will be immediately revoked. We will retain 
+                                your data for the period specified in our Privacy Policy, after which it will be permanently deleted 
+                                unless required to be retained by law.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Limitation of Liability -->
+                <section id="liability" class="policy-section card-hover animate__animated animate__fadeInUp" style="animation-delay: 2.2s;">
+                    <div class="flex items-start mb-4">
+                        <div class="step-number">11</div>
+                        <h2 class="text-2xl font-bold text-primary-800">Limitation of Liability</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="legal-box">
+                            <h3 class="text-lg font-medium text-purple-800 mb-3">Important Legal Limitations</h3>
+                            <div class="space-y-3 text-sm text-purple-700">
+                                <p>
+                                    <strong>To the maximum extent permitted by Indian law,</strong> VDocs and its affiliates, officers, 
+                                    employees, and agents shall not be liable for:
+                                </p>
+                                <ul class="list-disc list-inside space-y-1 ml-4">
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Any indirect, incidental, special, consequential, or punitive damages </li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Loss of profits, data, use, goodwill, or other intangible losses </li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Damages resulting from medical decisions made based on AI insights </li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Unauthorized access to or alteration of your transmissions or data </li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Service interruptions or delays </li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Third-party content, services, or conduct </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="bg-primary-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-primary-800 mb-2">Maximum Liability</h4>
+                            <p class="text-sm text-gray-700">
+                                Our total liability to you for any and all claims arising from or related to the use of VDocs 
+                                shall not exceed the amount you have paid us in the twelve (12) months preceding the claim, 
+                                or ₹10,000, whichever is lower.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Indemnification -->
+                <section id="indemnification" class="policy-section card-hover animate__animated animate__fadeInUp" style="animation-delay: 2.4s;">
+                    <div class="flex items-start mb-4">
+                        <div class="step-number">12</div>
+                        <h2 class="text-2xl font-bold text-primary-800">Indemnification</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-gray-700 leading-relaxed">
+                            You agree to indemnify, defend, and hold harmless VDocs, its affiliates, officers, directors, 
+                            employees, and agents from and against any and all claims, damages, losses, costs, and expenses 
+                            (including reasonable attorneys' fees) arising from or related to: 
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-medium text-gray-800 mb-2">User Actions</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Your use or misuse of the VDocs platform </li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Your violation of these Terms of Service </li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Your violation of any applicable laws or regulations </li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Content you upload or share through the platform </li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-medium text-gray-800 mb-2">Third-party Claims</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Infringement of third-party intellectual property rights </li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Unauthorized sharing of medical information</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Medical decisions made based on platform insights</li>
+                                    <li class="flex items-start"><span class="check-icon"><i class="fas fa-check"></i></span>Disputes with healthcare providers or labs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Governing Law & Dispute Resolution -->
+                <section id="governing-law" class="policy-section card-hover animate__animated animate__fadeInUp" style="animation-delay: 2.6s;">
+                    <div class="flex items-start mb-4">
+                        <div class="step-number">13</div>
+                        <h2 class="text-2xl font-bold text-primary-800">Governing Law & Dispute Resolution</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-primary-50 p-4 rounded-lg">
+                            <h3 class="text-lg font-medium text-primary-800 mb-2">Governing Law</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                These Terms of Service shall be governed by and construed in accordance with the laws of India,
+                                including but not limited to the Indian Contract Act, 1872, the Information Technology Act, 2000, 
+                                and other applicable Indian laws and regulations.
+                            </p>
+                        </div>
+                        <div class="space-y-3">
+                            <h3 class="text-lg font-medium text-gray-800">Dispute Resolution Process</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <div class="step-number">1</div>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Direct Resolution</h4>
+                                        <p class="text-sm text-gray-700">
+                                            We encourage users to first contact our support team to resolve disputes amicably.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="step-number">2</div>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Mediation</h4>
+                                        <p class="text-sm text-gray-700">
+                                            If direct resolution fails, disputes may be resolved through mediation in accordance with 
+                                            the rules of a recognized mediation center in India.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="step-number">3</div>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Jurisdiction</h4>
+                                        <p class="text-sm text-gray-700">
+                                            Any legal proceedings shall be subject to the exclusive jurisdiction of the competent 
+                                            courts in Bhiwadi, Rajasthan, India. 
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Information -->
+                <section id="contact" class="policy-section card-hover animate__animated animate__fadeInUp" style="animation-delay: 2.8s;">
+                    <div class="flex items-start mb-4">
+                        <div class="step-number">14</div>
+                        <h2 class="text-2xl font-bold text-primary-800">Contact Information</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-gray-700 leading-relaxed">
+                            If you have any questions, concerns, or legal inquiries regarding these Terms of Service, 
+                            please contact us using the information below:
+                        </p>
+                        <div class="bg-primary-50 p-6 rounded-lg">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <h4 class="font-medium text-primary-800 mb-3">Legal & Compliance</h4>
+                                    <div class="space-y-2 text-sm text-gray-700">
+                                        <p><strong>Email:</strong> legal@vdocs.in</p>
+                                        <p><strong>Subject Line:</strong> Terms of Service Inquiry</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-primary-800 mb-3">General Support</h4>
+                                    <div class="space-y-2 text-sm text-gray-700">
+                                        <p><strong>Email:</strong> support@vdocs.in</p>
+                                        <p><strong>Response Time:</strong> Within 48 hours</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-primary-200">
+                                <p class="text-xs text-gray-600">
+                                    <strong>Business Hours:</strong> Monday to Friday, 9:00 AM to 6:00 PM (IST)
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bg-primary-50 border-l-4 border-primary-400 p-4 rounded-lg">
+                            <p class="text-sm text-primary-700">
+                                <strong>Changes to Terms:</strong> We will notify users of significant changes to these Terms 
+                                via email or platform notifications at least 30 days before they take effect.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
     </div>
 
+    <!-- Footer -->
     <footer class="bg-gray-900 text-gray-400">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
-            <div class="col-span-2">
-                <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-file-medical text-white text-xl"></i>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-file-medical-alt text-white text-xl"></i>
+                        </div>
+                        <span class="text-xl font-bold text-white">VDocs</span>
                     </div>
-                    <span class="text-xl font-bold text-white">VDocs</span>
+                    <p class="mt-4 text-sm">
+                        Revolutionizing healthcare through secure digital records and AI-powered insights.
+                    </p>
+                    <div class="mt-6 flex space-x-6">
+                        <a href="https://www.instagram.com/vdocs.healthcare?igsh=MTk3czhkNnBjZjEzaw==" class="text-gray-400 hover:text-white transition duration-200">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/vdocshealth/" class="text-gray-400 hover:text-white transition duration-200">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
                 </div>
-                <p class="mt-4 text-sm">
-                    Revolutionizing healthcare through secure digital records and AI-powered insights.
+                <div>
+                    <h3 class="text-sm font-semibold text-white uppercase tracking-wider">Company</h3>
+                    <div class="mt-4 space-y-2">
+                        <a href="about_us.html" class="block text-sm hover:text-white transition duration-200">About Us</a>
+                        <a href="contact_us.html" class="block text-sm hover:text-white transition duration-200">Contact Us</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-white uppercase tracking-wider">Legal</h3>
+                    <div class="mt-4 space-y-2">
+                        <a href="privacy-policy.html" class="block text-sm hover:text-white transition duration-200">Privacy Policy</a>
+                        <a href="terms-of-service.html" class="block text-sm text-primary-400 hover:text-primary-300 transition duration-200">Terms of Service</a>
+                        <a href="refund-policy.html" class="block text-sm hover:text-white transition duration-200">Refund Policy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-800 pt-8">
+                <p class="text-xs text-gray-500 text-center">
+                    &copy; 2025 VD NextGen Digital Private Limited. All rights reserved.
                 </p>
-                <div class="mt-6 flex space-x-6">
-                    <a href="https://www.instagram.com/vdocs.healthcare?igsh=MTk3czhkNnBjZjEzaw==" class="text-gray-400 hover:text-white">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/company/vdocshealth/" class="text-gray-400 hover:text-white">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                </div>
-            </div>
-            <div>
-                <h3 class="text-sm font-semibold text-white uppercase tracking-wider">Company</h3>
-                <div class="mt-4 space-y-2">
-                    <a href="about_us.html" class="block text-sm hover:text-white transition">About Us</a>
-                    <a href="contact_us.html" class="block text-sm hover:text-white transition">Contact Us</a>
-                </div>
-            </div>
-            <div>
-                <h3 class="text-sm font-semibold text-white uppercase tracking-wider">Legal</h3>
-                <div class="mt-4 space-y-2">
-                    <a href="privacy-policy.html" class="block text-sm hover:text-white transition">Privacy Policy</a>
-                    <a href="terms-of-service.html" class="block text-sm hover:text-white transition">Terms of Service</a>
-                    <a href="refund-policy.html" class="block text-sm hover:text-white transition">Refund Policy</a>
-                </div>
             </div>
         </div>
-        <div class="mt-12 border-t border-gray-800 pt-8">
-            <p class="text-xs text-gray-500 text-center">
-                &copy; 2025 VD NextGen Digital Private Limited. All rights reserved.
-            </p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <script>
         // Set current date
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-IN', options); [cite_start]// Source: [181] or [cite: 181] - This is a comment and will be ignored by the browser.
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-IN', options);
+        
         // Intersection Observer for scroll animations
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('.policy-section');
@@ -661,13 +858,11 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('animate-in');
-                        // Optionally unobserve after animating once
-                        // observer.unobserve(entry.target);
                     }
                 });
             }, {
-                threshold: 0.1, // Trigger when 10% of the section is visible
-                rootMargin: '0px 0px -50px 0px' // Adjust to trigger a bit earlier
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
             });
 
             sections.forEach(section => {
