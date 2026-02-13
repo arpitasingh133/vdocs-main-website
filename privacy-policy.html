@@ -1,31 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy | VDocs - Secure Digital Health Records</title>
+  <title>Privacy Policy | VDocs</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Azeret+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            primary: {
-              50: '#f0f9ff',
-              100: '#e0f2fe',
-              200: '#bae6fd',
-              300: '#7dd3fc',
-              400: '#38bdf8',
-              500: '#0ea5e9',
-              600: '#0284c7',
-              700: '#0369a1',
-              800: '#075985',
-              900: '#0c4a6e',
+            brand: {
+              blue: '#2563EB',
+              dark: '#0f172a',
+              light: '#F8FAFC',
             },
+            ui: {
+              surface: '#FFFFFF',
+              border: '#E2E8F0',
+              text: '#334155',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+            mono: ['Azeret Mono', 'monospace'],
+          },
+          boxShadow: {
+            'glow': '0 0 20px rgba(37, 99, 235, 0.3)',
           }
         }
       }
@@ -34,484 +41,214 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f8fafc;
-    }
-    .gradient-bg {
-      background: linear-gradient(135deg, rgba(14,165,233,0.05) 0%, rgba(22,163,74,0.05) 100%);
-      background-color: #f8fafc;
-    }
-    .policy-hero {
-      background: linear-gradient(135deg, rgba(14,165,233,0.08) 0%, rgba(34,197,94,0.09) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .policy-hero::before {
-      content: '';
-      position: absolute;
-      top: -40%;
-      right: -18%;
-      width: 65%;
-      height: 170%;
-      background: radial-gradient(circle, rgba(14,165,233,0.13) 0%, rgba(14,165,233,0) 70%);
-      z-index: 0;
+      color: #334155;
     }
 
-    /* Individual section styling for a more open layout */
-    .policy-section {
-      background: #ffffff; /* White background for each section */
-      padding: 2.5rem;
-      border-radius: 1.25rem;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-      margin-bottom: 2.5rem; /* Space between sections */
-      
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .policy-section.animate-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .check-icon {
-      color: #0ea5e9;
-      background: #e0f2fe;
-      border-radius: 50%;
-      width: 2rem;
-      height: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      margin-right: .75rem;
-    }
-    
-    /* Sticky navigation for desktop */
-    @media (min-width: 1024px) {
-      .sticky-nav {
-        position: sticky;
-        top: 8rem;
-        align-self: flex-start;
-      }
-    }
-    .nav-item {
-      border-left: 3px solid transparent;
-      padding-left: 0.75rem;
-      transition: all 0.2s ease-in-out;
-    }
-    .nav-item.active {
-      color: #0c4a6e;
-      font-weight: 600;
-      border-left: 3px solid #0ea5e9;
-      background-color: #f0f9ff;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
   </style>
 </head>
-<body class="font-sans antialiased text-gray-800">
 
-  <header class="sticky top-0 z-50 bg-white shadow-sm" x-data="{ mobileOpen: false }">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center py-4">
-      <div class="flex items-center space-x-2">
-        <div class="w-16 h-16 rounded-lg flex items-center justify-center overflow-hidden">
-          <img src="images/logo.png" alt="VDocs Logo" class="w-full h-full object-contain">
+<body class="bg-gray-50 antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100" x-data="{ mobileOpen: false }">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <div class="flex items-center space-x-2">
+          <a href="index.html" class="flex items-center space-x-2">
+            <img src="images/logo.png" alt="VDocs" class="h-8">
+            <span
+              class="px-2 py-0.5 rounded text-[10px] font-mono bg-brand-blue/10 text-brand-blue uppercase tracking-wider font-bold">Beta</span>
+          </a>
         </div>
-        <span class="text-xl font-bold text-primary-800 sr-only">VDocs</span>
-      </div>
-      <div class="hidden md:flex space-x-8">
-        <a href="index.html" class="text-gray-600 hover:text-primary-600 transition">Home</a>
-        <a href="about_us.html" class="text-gray-600 hover:text-primary-600 transition">About Us</a>
-        <a href="index.html#features" class="text-gray-600 hover:text-primary-600 transition">Features</a>
-        <a href="contact_us.html" class="text-gray-600 hover:text-primary-600 transition">Contact</a>
-      </div>
-      <div class="flex space-x-4">
-        <a href="index.html#join-waitlist" class="hidden md:inline-block px-4 py-2 text-primary-600 font-medium rounded-lg hover:bg-primary-50 transition">Partner With Us</a>
-        <a href="index.html#join-waitlist" class="px-4 py-2 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition">Join Waitlist</a>
-      </div>
-      <button class="md:hidden focus:outline-none" @click="mobileOpen = !mobileOpen">
-        <i class="fas fa-bars text-gray-600 text-xl"></i>
-      </button>
-    </div>
-  </div>
-  <div
-    x-show="mobileOpen"
-    x-transition:enter="transition ease-out duration-300"
-    x-transition:enter-start="opacity-0 transform -translate-y-4"
-    x-transition:enter-end="opacity-100 transform translate-y-0"
-    x-transition:leave="transition ease-in duration-200"
-    x-transition:leave-start="opacity-100 transform translate-y-0"
-    x-transition:leave-end="opacity-0 transform -translate-y-4"
-    class="md:hidden mt-2 space-y-2 pb-4 border-t pt-4"
-  >
-    <a href="index.html" class="block text-gray-700 hover:text-primary-600 px-4 py-2">Home</a>
-    <a href="about_us.html" class="block text-gray-700 hover:text-primary-600 px-4 py-2">About Us</a>
-    <a href="index.html#features" class="block text-gray-700 hover:text-primary-600 px-4 py-2">Features</a>
-    <a href="contact_us.html" class="block text-gray-700 hover:text-primary-600 px-4 py-2">Contact</a>
-    <a href="index.html#join-waitlist" class="block text-primary-600 font-medium px-4 py-2">Partner With Us</a>
-    <a href="index.html#join-waitlist" class="block text-white bg-primary-600 hover:bg-primary-700 px-3 py-2 rounded mx-4 mt-2">Join Waitlist</a>
-  </div>
-</header>
 
-  <section class="policy-hero py-20 md:py-28 relative">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight animate__animated animate__fadeInDown">
-          Privacy Policy
-        </h1>
-        <p class="mt-6 text-lg text-gray-700 max-w-3xl mx-auto animate__animated animate__fadeIn animate__delay-1s">
-          Last updated: <span id="current-date"></span><br>
-          <span>
-            Your privacy matters. This policy explains how VDocs collects, uses, and protects your information.
-          </span>
-        </p>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="index.html#solutions"
+            class="text-lg font-bold text-gray-900 hover:text-brand-blue transition-colors">Solutions</a>
+          <a href="index.html#impact"
+            class="text-lg font-bold text-gray-900 hover:text-brand-blue transition-colors">Impact</a>
+          <a href="about_us.html"
+            class="text-lg font-bold text-gray-900 hover:text-brand-blue transition-colors">Company</a>
+        </div>
+
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="index.html#join-waitlist"
+            class="px-6 py-2.5 bg-brand-dark text-white text-sm font-bold rounded-full hover:bg-gray-800 transition-all">
+            I'm a clinic
+          </a>
+        </div>
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-gray-900 p-2" @click="mobileOpen = !mobileOpen">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
       </div>
     </div>
-  </section>
+    <!-- Mobile Menu -->
+    <div x-show="mobileOpen" x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+      x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
+      x-transition:leave-end="opacity-0 -translate-y-2"
+      class="md:hidden bg-white border-b border-gray-100 px-4 py-6 space-y-4 shadow-xl absolute w-full top-20 left-0 z-40">
+      <a href="index.html" class="block text-lg font-bold text-gray-900">Home</a>
+      <a href="about_us.html" class="block text-lg font-bold text-gray-900">Company</a>
+      <a href="contact_us.html" class="block text-lg font-bold text-gray-900">Contact</a>
+      <a href="index.html#join-waitlist"
+        class="block w-full text-center bg-brand-dark text-white py-3 rounded-lg font-bold text-lg">I'm a clinic</a>
+    </div>
+  </nav>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row mt-12 mb-16">
-    <aside class="lg:w-1/4 lg:pr-8 hidden lg:block sticky-nav">
-      <nav class="p-4 rounded-lg bg-gray-50 border border-gray-100">
-        <h3 class="text-lg font-semibold text-gray-800 mb-4">Policy Sections</h3>
-        <ul class="space-y-1">
-          <li><a href="#introduction" class="nav-item block py-2 text-gray-600 hover:text-primary-600 transition duration-200 rounded">Introduction</a></li>
-          <li><a href="#information-collection" class="nav-item block py-2 text-gray-600 hover:text-primary-600 transition duration-200 rounded">What We Collect</a></li>
-          <li><a href="#information-use" class="nav-item block py-2 text-gray-600 hover:text-primary-600 transition duration-200 rounded">How We Use Info</a></li>
-          <li><a href="#data-security" class="nav-item block py-2 text-gray-600 hover:text-primary-600 transition duration-200 rounded">Data Security</a></li>
-          <li><a href="#information-sharing" class="nav-item block py-2 text-gray-600 hover:text-primary-600 transition duration-200 rounded">Sharing Info</a></li>
-          <li><a href="#user-rights" class="nav-item block py-2 text-gray-600 hover:text-primary-600 transition duration-200 rounded">User Rights</a></li>
-          <li><a href="#cookies" class="nav-item block py-2 text-gray-600 hover:text-primary-600 transition duration-200 rounded">Use of Cookies</a></li>
-          <li><a href="#data-retention" class="nav-item block py-2 text-gray-600 hover:text-primary-600 transition duration-200 rounded">Data Retention</a></li>
-          <li><a href="#policy-updates" class="nav-item block py-2 text-gray-600 hover:text-primary-600 transition duration-200 rounded">Policy Updates</a></li>
-          <li><a href="#contact-us" class="nav-item block py-2 text-gray-600 hover:text-primary-600 transition duration-200 rounded">Contact Us</a></li>
+  <!-- Header -->
+  <header class="pt-32 pb-20 bg-white border-b border-gray-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        class="inline-flex items-center space-x-2 mb-4 px-3 py-1 rounded-full bg-brand-blue/10 text-brand-blue text-xs font-bold uppercase tracking-wider">
+        Last Updated: Feb 2026
+      </div>
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Privacy Policy</h1>
+      <p class="text-xl text-gray-600 leading-relaxed">
+        At VDocs, we treat clinical data with the highest level of security and confidentiality. Our policies are
+        compliant with the Ayushman Bharat Digital Mission (ABDM) and the Digital Personal Data Protection (DPDP) Act.
+      </p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="prose prose-lg prose-blue max-w-none text-gray-600">
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">1. Data Collection & Usage</h2>
+        <p class="mb-4">
+          We collect only the data necessary to provide clinical summarization services. This includes:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 mb-4">
+          <li><strong>Clinical Documents:</strong> PDF reports, scanned images, and test results uploaded by the
+            healthcare provider.</li>
+          <li><strong>User Information:</strong> Name, contact details, and professional credentials of the
+            doctors/clinics using our service.</li>
+          <li><strong>Usage Data:</strong> Information about how you access and use the platform (e.g., timestamps,
+            features used).</li>
         </ul>
-      </nav>
-    </aside>
-
-    <main class="lg:w-3/4">
-      <section id="introduction" class="policy-section">
-        <h2 class="text-2xl font-bold text-primary-800 mb-4">Introduction</h2>
-        <p class="text-gray-700 leading-relaxed mb-4">
-          VDocs is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and protect your personal and health data in line with industry standards and Indian legal requirements.
-        </p>
-        <p class="text-gray-700 leading-relaxed">
-          The policy complies with the Information Technology Act, 2000, the (Reasonable Security Practices) Rules, 2011, and privacy principles from global best practices.
+        <p>
+          All clinical data is processed ephemerally where possible and stored securely only for the duration required
+          by the healthcare provider's workflow.
         </p>
       </section>
 
-      <section id="information-collection" class="policy-section">
-        <h2 class="text-2xl font-bold text-primary-800 mb-4">What Information We Collect</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">Personal Information</h3>
-            <ul class="list-none ml-2">
-              <li class="flex items-center mb-2"><span class="check-icon"><i class="fas fa-check"></i></span>Name, email, and phone number</li>
-              <li class="flex items-center mb-2"><span class="check-icon"><i class="fas fa-check"></i></span>Date of birth and gender</li>
-              <li class="flex items-center mb-2"><span class="check-icon"><i class="fas fa-check"></i></span>Login/account information & OTP data</li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">Medical & Technical Information</h3>
-            <ul class="list-none ml-2">
-              <li class="flex items-center mb-2"><span class="check-icon"><i class="fas fa-check"></i></span>Uploaded medical reports & health data</li>
-              <li class="flex items-center mb-2"><span class="check-icon"><i class="fas fa-check"></i></span>Analysis results from our AI engine</li>
-              <li class="flex items-center mb-2"><span class="check-icon"><i class="fas fa-check"></i></span>IP address, device, session & usage data</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section id="information-use" class="policy-section">
-        <h2 class="text-2xl font-bold text-primary-800 mb-4">How We Use Your Information</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <h4 class="font-semibold text-primary-700 mb-2">Service Delivery</h4>
-            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
-              <li>Store and organize medical documents securely</li>
-              <li>Provide AI-powered analysis and personalized insights</li>
-              <li>Enable secure sharing of records with authorized healthcare providers</li>
-              <li>Maintain your user account and provide technical support</li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="font-semibold text-primary-700 mb-2">Platform Improvement</h4>
-            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
-              <li>Continuously improve our AI models and platform features</li>
-              <li>Enhance overall user experience and interface</li>
-              <li>Monitor platform security and performance to ensure reliability</li>
-              <li>Develop new healthcare insights from **anonymized, aggregated data**</li>
-            </ul>
-          </div>
-        </div>
-        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mt-6 rounded text-primary-800">
-          <span class="font-semibold">Important Note:</span> Aggregated and anonymized data may be used for platform improvement and research. This data is **never traceable to individual users.**
-        </div>
-      </section>
-
-      <section id="data-security" class="policy-section">
-        <h2 class="text-2xl font-bold text-primary-800 mb-4">Data Storage & Security</h2>
-        <div class="grid md:grid-cols-3 gap-6 mb-4">
-          <div class="text-center">
-            <div class="text-3xl mb-2 text-primary-600">🔒</div>
-            <h4 class="font-semibold text-gray-800 mb-2">Robust Encryption</h4>
-            <p class="text-gray-600 text-sm">Utilizing end-to-end encryption for all data, both in transit and at rest.</p>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl mb-2 text-primary-600">🛡️</div>
-            <h4 class="font-semibold text-gray-800 mb-2">Strict Access Controls</h4>
-            <p class="text-gray-600 text-sm">Implementing multi-factor authentication, granular admin restrictions, and mandatory staff training.</p>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl mb-2 text-primary-600">🏥</div>
-            <h4 class="font-semibold text-gray-800 mb-2">Secure Infrastructure</h4>
-            <p class="text-gray-600 text-sm">Hosted on healthcare-grade, compliant servers with continuous 24/7 security monitoring.</p>
-          </div>
-        </div>
-        <p class="text-gray-700 text-sm bg-gray-50 p-3 rounded border border-gray-100">
-          All data is stored on secure, redundant servers with regular backups and vigilant monitoring. Our physical, electronic, and procedural safeguards are consistently updated to meet the highest standards.
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">2. ABDM & HIPAA Compliance</h2>
+        <p class="mb-4">
+          VDocs adheres to the rigorous standards set by:
         </p>
+        <div class="bg-blue-50 p-6 rounded-xl border border-blue-100 mb-6">
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-brand-blue mt-1 mr-3"></i>
+              <div>
+                <strong class="text-gray-900">ABDM (Ayushman Bharat Digital Mission):</strong> Implementation of Health
+                IDs (ABHA) and secure Health Information Exchange (HIE) protocols.
+              </div>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-brand-blue mt-1 mr-3"></i>
+              <div>
+                <strong class="text-gray-900">Encryption:</strong> All data is encrypted at rest (AES-256) and in
+                transit (TLS 1.3).
+              </div>
+            </li>
+          </ul>
+        </div>
       </section>
 
-      <section id="information-sharing" class="policy-section">
-        <h2 class="text-2xl font-bold text-primary-800 mb-4">Sharing of Information</h2>
-        <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded text-red-800">
-          <h4 class="font-semibold text-red-800 mb-2">We Do NOT Sell Your Data</h4>
-          <p class="text-red-700 text-sm">
-            VDocs will **never** sell, rent, or trade your personal or medical information to any third parties for commercial purposes. Your data privacy is our top priority.
-          </p>
-        </div>
-        <p class="mb-3 text-gray-700 font-medium">Information is only shared under the following limited circumstances:</p>
-        <ul class="list-disc list-inside ml-4 text-gray-700 space-y-2">
-          <li><span class="font-semibold text-primary-700">With your explicit consent:</span> When you actively authorize us to share your health records with specific healthcare providers, laboratories, or other entities.</li>
-          <li><span class="font-semibold text-primary-700">With trusted service providers:</span> Only with vendors and partners who support our platform operations (e.g., cloud hosting, analytics). These partners are bound by strict Non-Disclosure Agreements (NDAs) and rigorous data processing addendums.</li>
-          <li><span class="font-semibold text-primary-700">To fulfill legal obligations:</span> If required by law, court order, or valid governmental authority requests, we will comply while ensuring your rights are protected.</li>
-          <li><span class="font-semibold text-primary-700">In medical emergencies:</span> In rare, life-threatening situations where sharing information is critical for your immediate medical care, as permitted by law.</li>
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">3. Data Sharing & Disclosure</h2>
+        <p class="mb-4">
+          We do <strong>not</strong> sell your personal or clinical data. Data is shared only in the following
+          circumstances:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>With your explicit consent for interoperability purposes (e.g., sharing a summary with another
+            specialist).</li>
+          <li>To comply with legal obligations or court orders.</li>
+          <li>With trusted service providers (e.g., cloud infrastructure) who are bound by strict confidentiality
+            agreements.</li>
         </ul>
       </section>
 
-      <section id="user-rights" class="policy-section">
-        <h2 class="text-2xl font-bold text-primary-800 mb-4">User Rights & Controls</h2>
-        <p class="text-gray-700 mb-4">You have significant control over your data on the VDocs platform:</p>
-        <div class="grid md:grid-cols-2 gap-4">
-          <div class="border border-blue-100 bg-blue-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-primary-800 mb-2">Access & Download Your Data</h4>
-            <p class="text-gray-700 text-sm">You can request and download a copy of your personal and health data in a portable, machine-readable format at any time.</p>
-          </div>
-          <div class="border border-green-100 bg-green-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-primary-800 mb-2">Correct & Update Information</h4>
-            <p class="text-gray-700 text-sm">You have the right to update or correct any inaccurate or incomplete information within your VDocs account.</p>
-          </div>
-          <div class="border border-red-100 bg-red-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-primary-800 mb-2">Request Data Deletion</h4>
-            <p class="text-gray-700 text-sm">You can request the deletion of your VDocs account and associated data, subject to applicable legal retention requirements.</p>
-          </div>
-          <div class="border border-purple-100 bg-purple-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-primary-800 mb-2">Data Portability</h4>
-            <p class="text-gray-700 text-sm">Beyond download, you can request that your data be transferred directly to another service provider where technically feasible.</p>
-          </div>
-        </div>
-        <p class="mt-4 text-gray-700 text-sm bg-gray-50 py-3 px-4 rounded border border-gray-100">
-          To exercise any of these rights, please contact our Privacy Officer at the email address provided in the "Contact Us" section below.
-        </p>
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">4. Your Rights</h2>
+        <p class="mb-4">Under the DPDP Act, you have the right to:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Access the personal data we hold about you.</li>
+          <li>Request correction of inaccurate or incomplete data.</li>
+          <li>Request erasure of your data ("Right to be Forgotten").</li>
+          <li>Withdraw consent for data processing at any time.</li>
+        </ul>
       </section>
 
-      <section id="cookies" class="policy-section">
-        <h2 class="text-2xl font-bold text-primary-800 mb-4">Use of Cookies and Similar Technologies</h2>
-        <p class="text-gray-700 mb-3">VDocs uses cookies and similar tracking technologies to ensure the proper functioning of our platform, enhance your experience, and gather analytics. These include:</p>
-        <ul class="space-y-3 ml-1">
-          <li class="flex items-start">
-            <span class="w-3 h-3 rounded-full bg-primary-500 mt-2 mr-3 flex-shrink-0"></span>
-            <span><span class="font-semibold text-primary-700">Authentication Cookies:</span> Essential for maintaining your logged-in session and ensuring account security.</span>
-          </li>
-          <li class="flex items-start">
-            <span class="w-3 h-3 rounded-full bg-primary-500 mt-2 mr-3 flex-shrink-0"></span>
-            <span><span class="font-semibold text-primary-700">Functional Cookies:</span> Help us remember your preferences and settings (e.g., language, display options) for a more personalized experience.</span>
-          </li>
-          <li class="flex items-start">
-            <span class="w-3 h-3 rounded-full bg-primary-500 mt-2 mr-3 flex-shrink-0"></span>
-            <span><span class="font-semibold text-primary-700">Analytics Cookies:</span> Used to collect aggregated, anonymous data on how users interact with our platform, enabling us to identify areas for improvement.</span>
-          </li>
-        </ul>
-        <p class="text-sm text-gray-700 bg-blue-50 p-3 rounded mt-4 border border-blue-100">
-          You have control over cookie settings through your web browser. Please note that disabling certain types of cookies may impact the functionality and features available on the VDocs platform.
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">5. Contact Grievance Officer</h2>
+        <p class="mb-4">
+          For any privacy concerns or grievances, please contact our implementation team:
         </p>
-      </section>
-      
-      <section id="data-retention" class="policy-section">
-        <h2 class="text-2xl font-bold text-primary-800 mb-4">Data Retention Policy</h2>
-        <p class="text-gray-700 mb-3">We retain your data only for as long as necessary to fulfill the purposes for which it was collected, or as required by law:</p>
-        <ul class="list-disc ml-5 mb-2 text-gray-700 space-y-2">
-          <li><span class="font-semibold text-primary-700">Active accounts:</span> Your personal and health data is retained while your VDocs account remains active.</li>
-          <li><span class="font-semibold text-primary-700">Inactive accounts:</span> For accounts that become inactive, data may be retained for a period of up to 3 years from the last activity, unless you specifically request earlier deletion.</li>
-          <li><span class="font-semibold text-primary-700">Legal and compliance obligations:</span> Certain data may be retained for longer periods to comply with legal, regulatory, or audit requirements.</li>
-          <li><span class="font-semibold text-primary-700">Anonymized data:</span> Aggregated and anonymous data, which cannot be linked back to an individual, may be kept indefinitely for research and platform improvement.</li>
-        </ul>
-      </section>
-      
-      <section id="policy-updates" class="policy-section">
-        <h2 class="text-2xl font-bold text-primary-800 mb-4">Updates to This Privacy Policy</h2>
-        <p class="text-gray-700 mb-3">VDocs reserves the right to update this Privacy Policy periodically to reflect changes in our practices or relevant laws. When we make significant changes:</p>
-        <ul class="list-disc ml-5 text-gray-700 mb-1 space-y-2">
-          <li>We will notify registered users of major changes via email or prominent notices within the VDocs platform.</li>
-          <li>The "Last updated" date at the top of this policy will always reflect the most recent revision.</li>
-          <li>We will provide a clear summary of major changes for your convenience when applicable.</li>
-        </ul>
-        <p class="text-gray-700 text-sm bg-gray-50 p-3 rounded border border-gray-100">
-          You are encouraged to review this Privacy Policy regularly to stay informed about how we are protecting your information.
-        </p>
-      </section>
-
-      <section id="contact-us" class="policy-section">
-        <h2 class="text-2xl font-bold text-primary-800 mb-4">Contact Us</h2>
-        <p class="text-gray-700 mb-4">If you have any questions, concerns, or requests regarding this Privacy Policy or your data, please contact us:</p>
-        <div class="md:grid md:grid-cols-2 gap-6">
-          <div>
-            <h4 class="font-semibold text-primary-700 mb-2">VDocs Privacy Officer</h4>
-            <p class="text-sm text-gray-700">
-              Email: <a href="mailto:privacy@vdocs.in" class="text-primary-600 hover:underline font-medium">privacy@vdocs.in</a>
-            </p>
-          </div>
-          <div class="mt-4 md:mt-0">
-            <h4 class="font-semibold text-primary-700 mb-2">General Inquiries & Support</h4>
-            <p class="text-sm text-gray-700">
-              Email: <a href="mailto:support@vdocs.in" class="text-primary-600 hover:underline font-medium">support@vdocs.in</a>
-            </p>
-          </div>
-        </div>
-        <div class="mt-6 pt-4 border-t border-gray-200">
-          <p class="text-sm text-gray-600">
-            <span class="font-semibold">Response time:</span> We strive to respond to all privacy-related requests and inquiries within 30 days.
+        <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+          <p class="font-bold text-gray-900">Privacy Office</p>
+          <p>VD NextGen Digital Pvt Ltd</p>
+          <p class="mt-2"><a href="mailto:privacy@vdocs.in" class="text-brand-blue hover:underline">privacy@vdocs.in</a>
           </p>
         </div>
       </section>
 
-      <div class="text-center mt-10">
-        <span class="text-xs text-gray-500">
-          This Privacy Policy is effective as of the updated date above and applies to all users of the VDocs platform.
-        </span>
-      </div>
-    </main>
-  </div>
+    </div>
+  </main>
 
-  <footer class="bg-gray-900 text-gray-400">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-8 mb-12">
         <div class="col-span-2">
-          <div class="flex items-center space-x-2">
-            <div class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
-              <i class="fas fa-file-medical text-white text-xl"></i>
-            </div>
-            <span class="text-xl font-bold text-white">VDocs</span>
-          </div>
-          <p class="mt-4 text-sm">
-            Revolutionizing healthcare through secure digital records and AI-powered insights.
+          <img src="images/logo.png" alt="VDocs" class="h-8">
+          <p class="text-gray-500 mt-4 max-w-xs text-sm">
+            Intelligent clinical summarization and EMR extensions for modern healthcare providers.
           </p>
-          <div class="mt-6 flex space-x-6">
-            <a href="https://www.instagram.com/vdocs.healthcare?igsh=MTk3czhkNnBjZjEzaw==" class="text-gray-400 hover:text-white">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.linkedin.com/company/vdocshealth/" class="text-gray-400 hover:text-white">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-          </div>
         </div>
         <div>
-          <h3 class="text-sm font-semibold text-white uppercase tracking-wider">Company</h3>
-          <div class="mt-4 space-y-2">
-            <a href="about_us.html" class="block text-sm hover:text-white transition">About Us</a>
-            <a href="contact_us.html" class="block text-sm hover:text-white transition">Contact Us</a>
-          </div>
+          <h4 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Product</h4>
+          <ul class="space-y-3 text-sm text-gray-500">
+            <li><a href="index.html#summarize" class="hover:text-brand-blue transition">Summarization</a></li>
+            <li><a href="index.html#unify" class="hover:text-brand-blue transition">Patient Timeline</a></li>
+            <li><a href="index.html#security" class="hover:text-brand-blue transition">Security</a></li>
+          </ul>
         </div>
         <div>
-          <h3 class="text-sm font-semibold text-white uppercase tracking-wider">Legal</h3>
-          <div class="mt-4 space-y-2">
-            <a href="privacy-policy.html" class="block text-sm hover:text-white transition">Privacy Policy</a>
-            <a href="terms-of-service.html" class="block text-sm hover:text-white transition">Terms of Service</a>
-            <a href="refund-policy.html" class="block text-sm hover:text-white transition">Refund Policy</a>
-          </div>
+          <h4 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Company</h4>
+          <ul class="space-y-3 text-sm text-gray-500">
+            <li><a href="about_us.html" class="hover:text-brand-blue transition">About</a></li>
+            <li><a href="contact_us.html" class="hover:text-brand-blue transition">Contact</a></li>
+            <li><a href="privacy-policy.html" class="hover:text-brand-blue transition">Privacy</a></li>
+          </ul>
         </div>
       </div>
-      <div class="mt-12 border-t border-gray-800 pt-8">
-        <p class="text-xs text-gray-500 text-center">
-          &copy; 2025 VD NextGen Digital Private Limited. All rights reserved.
-        </p>
+      <div
+        class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+        <div>&copy; 2025 VD NextGen Digital Pvt Ltd.</div>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="https://linkedin.com/company/vdocshealth/" target="_blank"
+            class="hover:text-brand-blue transition text-2xl"><i class="fab fa-linkedin"></i></a>
+          <a href="https://instagram.com/vdocs.healthcare" target="_blank"
+            class="hover:text-brand-blue transition text-2xl"><i class="fab fa-instagram"></i></a>
+        </div>
       </div>
     </div>
   </footer>
-
-  <script>
-    // Show "Last updated" date
-    document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-IN', {
-      year: 'numeric', month: 'long', day: 'numeric'
-    });
-
-    // Intersection Observer for scroll animations
-    document.addEventListener('DOMContentLoaded', () => {
-      const sections = document.querySelectorAll('.policy-section');
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      });
-
-      sections.forEach(section => {
-        observer.observe(section);
-      });
-
-      // Sticky navigation active state
-      const navItems = document.querySelectorAll('.nav-item');
-      const mainSections = document.querySelectorAll('main section[id]');
-
-      const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          const id = entry.target.getAttribute('id');
-          const navLink = document.querySelector(`.nav-item[href="#${id}"]`);
-
-          if (navLink) {
-            if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-              navItems.forEach(item => item.classList.remove('active'));
-              navLink.classList.add('active');
-            } else if (!entry.isIntersecting && navLink.classList.contains('active')) {
-              // This part can be tricky for precise active state management.
-              // We rely primarily on the next section becoming active.
-              // To handle cases where no section is fully in view, you might need a more complex logic.
-            }
-          }
-        });
-      }, {
-        root: null,
-        rootMargin: '-20% 0px -70% 0px',
-        threshold: 0.01
-      });
-
-      mainSections.forEach(section => {
-        sectionObserver.observe(section);
-      });
-
-      // Handle click on nav items for smooth scroll and active state
-      navItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href').substring(1);
-          const targetSection = document.getElementById(targetId);
-
-          if (targetSection) {
-            window.scrollTo({
-              top: targetSection.offsetTop - 100,
-              behavior: 'smooth'
-            });
-
-            navItems.forEach(navItem => navItem.classList.remove('active'));
-            this.classList.add('active');
-          }
-        });
-      });
-    });
-  </script>
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </body>
+
 </html>

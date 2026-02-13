@@ -1,386 +1,251 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | VDocs - Your Personal Digital Health Locker</title>
+    <title>About Us | VDocs</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Azeret+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: {
-                            50: '#f0f7ff',
-                            100: '#e0f0ff',
-                            200: '#bae0ff',
-                            300: '#7cc4ff',
-                            400: '#36a2ff',
-                            500: '#0d8aff',
-                            600: '#0066cc',
-                            700: '#0052a3',
-                            800: '#003d7a',
-                            900: '#002952',
+                        brand: {
+                            blue: '#2563EB', // Blue Accent
+                            dark: '#0f172a',   // Darker Slate
+                            light: '#F8FAFC',
                         },
-                        secondary: {
-                            50: '#f5f9ff',
-                            100: '#e6f0ff',
-                            200: '#cce0ff',
-                            300: '#99c2ff',
-                            400: '#6699ff',
-                            500: '#3366ff',
-                            600: '#1a4dcc',
-                            700: '#003399',
-                            800: '#002266',
-                            900: '#001133',
+                        ui: {
+                            surface: '#FFFFFF',
+                            border: '#E2E8F0',
+                            text: '#334155',
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                        mono: ['Azeret Mono', 'monospace'],
                     },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(37, 99, 235, 0.3)',
+                    }
                 }
             }
         }
     </script>
     <style>
-        .health-gradient {
-            background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #334155;
         }
-        .card-hover {
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.9);
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px -10px rgba(13, 138, 255, 0.15);
-            border-color: rgba(13, 138, 255, 0.2);
-        }
-        .nav-blur {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
-        }
-        
-        /* Colorful icon backgrounds */
-        .icon-blue { background: linear-gradient(135deg, #0d8aff 0%, #3366ff 100%); }
-        .icon-green { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
-        .icon-purple { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
-        .icon-orange { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
-        .icon-teal { background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%); }
     </style>
 </head>
-<body class="font-sans antialiased text-gray-800 bg-white">
+
+<body class="bg-white antialiased">
+
     <!-- Navigation -->
-    <header class="sticky top-0 z-50 nav-blur shadow-sm" x-data="{ mobileOpen: false }">
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100" x-data="{ mobileOpen: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-3">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-lg bg-primary-600 flex items-center justify-center shadow-md">
-                        <i class="fas fa-file-medical-alt text-white text-lg"></i>
-                    </div>
-                    <span class="text-xl font-bold text-primary-800">VDocs</span>
-                </div>
-                <div class="hidden md:flex space-x-6">
-                    <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 font-medium py-2">Home</a>
-                    <a href="about_us.html" class="text-primary-600 font-medium py-2">About Us</a>
-                    <a href="index.html#features" class="text-gray-700 hover:text-primary-600 transition-all duration-300 font-medium py-2">Features</a>
-                    <a href="contact_us.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 font-medium py-2">Contact</a>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <a href="index.html#join-waitlist" class="px-5 py-2.5 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-all duration-300">
-                        Join Waitlist
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <img src="images/logo.png" alt="VDocs" class="h-8">
+                        <span
+                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-brand-blue/10 text-brand-blue uppercase tracking-wider font-bold">Beta</span>
                     </a>
-                    <button class="md:hidden focus:outline-none" @click="mobileOpen = !mobileOpen">
-                        <i class="fas fa-bars text-gray-700 text-xl"></i>
-                    </button>
                 </div>
-            </div>
-            <!-- Mobile Menu -->
-            <div x-show="mobileOpen" x-transition class="md:hidden py-3 border-t border-gray-200">
-                <div class="flex flex-col space-y-3">
-                    <a href="index.html" class="text-gray-700 hover:text-primary-600 font-medium py-2">Home</a>
-                    <a href="about_us.html" class="text-primary-600 font-medium py-2">About Us</a>
-                    <a href="index.html#features" class="text-gray-700 hover:text-primary-600 font-medium py-2">Features</a>
-                    <a href="contact_us.html" class="text-gray-700 hover:text-primary-600 font-medium py-2">Contact</a>
-                    <a href="index.html#join-waitlist" class="bg-primary-600 text-white text-center px-4 py-2.5 rounded-lg font-medium">Join Waitlist</a>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#solutions"
+                        class="text-lg font-bold text-gray-900 hover:text-brand-blue transition-colors">Solutions</a>
+                    <a href="index.html#impact"
+                        class="text-lg font-bold text-gray-900 hover:text-brand-blue transition-colors">Impact</a>
+                    <a href="about_us.html" class="text-lg font-bold text-brand-blue transition-colors">Company</a>
                 </div>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="index.html#join-waitlist"
+                        class="px-6 py-2.5 bg-brand-dark text-white text-sm font-bold rounded-full hover:bg-gray-800 transition-all">
+                        I'm a clinic
+                    </a>
+                </div>
+                <button class="md:hidden text-gray-900 p-2" @click="mobileOpen = !mobileOpen">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
             </div>
         </div>
-    </header>
+        <div x-show="mobileOpen" x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-2"
+            class="md:hidden bg-white border-b border-gray-100 px-4 py-6 space-y-4 shadow-xl absolute w-full top-20 left-0 z-40">
+            <a href="index.html" class="block text-lg font-bold text-gray-900">Home</a>
+            <a href="about_us.html" class="block text-lg font-bold text-brand-blue">Company</a>
+            <a href="contact_us.html" class="block text-lg font-bold text-gray-900">Contact</a>
+            <a href="index.html#join-waitlist"
+                class="block w-full text-center bg-brand-dark text-white py-3 rounded-lg font-bold text-lg">Book
+                Demo</a>
+        </div>
+    </nav>
 
-    <!-- Hero Section -->
-    <section class="health-gradient py-16 md:py-20">
+    <!-- Header -->
+    <section class="pt-40 pb-20 bg-brand-light border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center space-x-2 mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span>
+                <span class="text-sm font-mono font-medium text-gray-500 uppercase tracking-widest">Our Mission</span>
+            </div>
+            <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-8 leading-tight">
+                Fixing the "Data Layer"<br>of Indian Healthcare.
+            </h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                We believe that for AI to transform medicine, health data must first be accessible, structured, and
+                secure. We are building the infrastructure to make that happen.
+            </p>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                    Empowering Your Health Journey
-                </h1>
-                <p class="text-lg text-gray-700 leading-relaxed">
-                    VDocs is committed to simplifying how people manage their health records. We offer secure, AI-enhanced tools to help individuals organize, track, and share their medical documents—while maintaining complete control over their data.
-                </p>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900">Builders & Clinicians</h2>
+                <p class="text-gray-500 mt-4">The team bridging the gap between medical reality and AI potential.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Arpita Singh -->
+                <div class="group">
+                    <div class="aspect-square bg-gray-100 rounded-2xl mb-6 overflow-hidden relative">
+                        <img src="images/arpita.jpg" alt="Arpita Singh"
+                            class="w-full h-full object-cover transition-all duration-500">
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-900">Arpita Singh</h3>
+                    <p class="text-sm font-mono text-brand-blue mt-1">Co-Founder & CEO</p>
+                </div>
+
+                <!-- Viren Bansal -->
+                <div class="group">
+                    <div class="aspect-square bg-gray-100 rounded-2xl mb-6 overflow-hidden relative">
+                        <img src="images/viren.png" alt="Viren Bansal"
+                            class="w-full h-full object-cover transition-all duration-500">
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-900">Viren Bansal (AIIMS)</h3>
+                    <p class="text-sm font-mono text-brand-blue mt-1">Co-Founder</p>
+                </div>
+
+                <!-- Navyansh Kesarwani -->
+                <div class="group">
+                    <div class="aspect-square bg-gray-100 rounded-2xl mb-6 overflow-hidden relative">
+                        <img src="images/navyansh.jpeg" alt="Navyansh Kesarwani"
+                            class="w-full h-full object-cover transition-all duration-500">
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-900">Navyansh Kesarwani</h3>
+                    <p class="text-sm font-mono text-brand-blue mt-1">CTO & AI Lead</p>
+                </div>
+
+                <!-- Manthan Vats -->
+                <div class="group">
+                    <div class="aspect-square bg-gray-100 rounded-2xl mb-6 overflow-hidden relative">
+                        <img src="images/manthan.png" alt="Manthan Vats"
+                            class="w-full h-full object-cover transition-all duration-500">
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-900">Manthan Vats</h3>
+                    <p class="text-sm font-mono text-brand-blue mt-1">Founding Developer</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Who We Are -->
-    <section class="py-16 bg-white">
+    <!-- Market Context (Dark) -->
+    <section class="py-24 bg-brand-dark text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Who We Are</h2>
-                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                        VDocs is a health-tech startup dedicated to transforming how Indians manage their health information. We're building India's most trusted personal health record platform that puts patients in complete control of their medical data.
+                    <h2 class="text-3xl font-bold mb-6">Why we are building this.</h2>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-6">
+                        India is undergoing a digital health revolution. The government's ABDM initiative has registered
+                        over 300,000 facilities, creating a massive opportunity for innovation.
                     </p>
-                    <p class="text-lg text-gray-700 leading-relaxed">
-                        Our team combines expertise in healthcare, technology, and data security to create a solution that's both powerful and easy to use, while fully aligned with India's digital health vision.
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        However, digitization creates data overload. VDocs exists to turn that raw data into clinical
+                        intelligence, saving doctors time and improving patient outcomes.
                     </p>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200">
-                    <div class="text-center">
-                        <div class="w-20 h-20 rounded-2xl icon-blue flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-heartbeat text-white text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">Patient-First Approach</h3>
-                        <p class="text-gray-600">Every feature is designed with the patient's needs, privacy, and control as the top priority.</p>
+                <div class="grid grid-cols-2 gap-8 font-mono">
+                    <div class="border-l-2 border-brand-blue pl-6">
+                        <div class="text-3xl font-bold text-white mb-2">300K+</div>
+                        <div class="text-xs text-gray-500 uppercase tracking-widest">Facilities</div>
+                    </div>
+                    <div class="border-l-2 border-brand-blue pl-6">
+                        <div class="text-3xl font-bold text-white mb-2">$5B</div>
+                        <div class="text-xs text-gray-500 uppercase tracking-widest">Market Size</div>
+                    </div>
+                    <div class="border-l-2 border-brand-blue pl-6">
+                        <div class="text-3xl font-bold text-white mb-2">60%</div>
+                        <div class="text-xs text-gray-500 uppercase tracking-widest">Efficiency Gain</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Mission & Vision -->
-    <section class="py-16 health-gradient">
+    <!-- Footer (Consistent) -->
+    <footer class="bg-white border-t border-gray-200 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="space-y-6">
-                    <div class="w-14 h-14 rounded-2xl bg-primary-100 flex items-center justify-center">
-                        <i class="fas fa-bullseye text-primary-600 text-2xl"></i>
-                    </div>
-                    <h2 class="text-3xl font-bold text-gray-900">Our Mission</h2>
-                    <p class="text-lg text-gray-700 leading-relaxed">
-                        To empower every individual with secure ownership and control of their health data through an intuitive, ABDM-compliant digital health locker.
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-2">
+                    <img src="images/logo.png" alt="VDocs" class="h-8">
+                    <p class="text-gray-500 mt-4 max-w-xs text-sm">
+                        Intelligent clinical summarization and EMR extensions for modern healthcare providers.
                     </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-start space-x-3">
-                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fas fa-check text-green-500 text-xs"></i>
-                            </div>
-                            <p class="text-gray-700">Enable lifelong access to personal health records</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Product</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="index.html#summarize" class="hover:text-brand-blue transition">Summarization</a>
                         </li>
-                        <li class="flex items-start space-x-3">
-                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fas fa-check text-green-500 text-xs"></i>
-                            </div>
-                            <p class="text-gray-700">Ensure privacy through patient-controlled data sharing</p>
+                        <li><a href="index.html#unify" class="hover:text-brand-blue transition">Patient Timeline</a>
                         </li>
-                        <li class="flex items-start space-x-3">
-                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fas fa-check text-green-500 text-xs"></i>
-                            </div>
-                            <p class="text-gray-700">Simplify health record management for millions of Indians</p>
-                        </li>
+                        <li><a href="index.html#security" class="hover:text-brand-blue transition">Security</a></li>
                     </ul>
                 </div>
-                <div class="space-y-6">
-                    <div class="w-14 h-14 rounded-2xl bg-primary-100 flex items-center justify-center">
-                        <i class="fas fa-eye text-primary-600 text-2xl"></i>
-                    </div>
-                    <h2 class="text-3xl font-bold text-gray-900">Our Vision</h2>
-                    <p class="text-lg text-gray-700 leading-relaxed">
-                        To build a trusted patient-first health ecosystem in India where every individual has seamless, secure access to their complete health history.
-                    </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-start space-x-3">
-                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fas fa-check text-green-500 text-xs"></i>
-                            </div>
-                            <p class="text-gray-700">Make health record management as simple as online banking</p>
-                        </li>
-                        <li class="flex items-start space-x-3">
-                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fas fa-check text-green-500 text-xs"></i>
-                            </div>
-                            <p class="text-gray-700">Contribute to India's digital health transformation</p>
-                        </li>
-                        <li class="flex items-start space-x-3">
-                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fas fa-check text-green-500 text-xs"></i>
-                            </div>
-                            <p class="text-gray-700">Enable better healthcare decisions through accessible health data</p>
-                        </li>
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Company</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="about_us.html" class="hover:text-brand-blue transition">About</a></li>
+                        <li><a href="contact_us.html" class="hover:text-brand-blue transition">Contact</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-brand-blue transition">Privacy</a></li>
                     </ul>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Core Values -->
-    <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
-                <p class="text-lg text-gray-700">The principles that guide everything we do at VDocs</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="text-center">
-                    <div class="w-16 h-16 rounded-2xl icon-blue flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-user-shield text-white text-2xl"></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3 text-gray-900">Privacy First</h3>
-                    <p class="text-gray-600">Health data belongs to patients. We never compromise on privacy.</p>
+            <div
+                class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                <div>&copy; 2025 VD NextGen Digital Pvt Ltd.</div>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="https://linkedin.com/company/vdocshealth/" target="_blank"
+                        class="hover:text-brand-blue transition text-2xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://instagram.com/vdocs.healthcare" target="_blank"
+                        class="hover:text-brand-blue transition text-2xl"><i class="fab fa-instagram"></i></a>
                 </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 rounded-2xl icon-green flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-hands-helping text-white text-2xl"></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3 text-gray-900">Patient Empowerment</h3>
-                    <p class="text-gray-600">We put patients in control of their health journey.</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 rounded-2xl icon-purple flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-eye text-white text-2xl"></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3 text-gray-900">Transparency</h3>
-                    <p class="text-gray-600">Clear communication about how data is used and protected.</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 rounded-2xl icon-teal flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-home text-white text-2xl"></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3 text-gray-900">Family Care</h3>
-                    <p class="text-gray-600">Supporting health management for entire families with consent.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Journey -->
-    <section class="py-16 health-gradient">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Journey</h2>
-            <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                VDocs was founded with the belief that no patient should lose access to their health records or depend on scattered files. We aim to simplify healthcare for millions through a secure digital vault.
-            </p>
-            <p class="text-lg text-gray-700 leading-relaxed">
-                Did you know? 1 in 5 misdiagnoses happen due to lost or inaccessible medical reports. This reality inspired us to create a solution that ensures your health history is always available when you need it most.
-            </p>
-        </div>
-    </section>
-
-    <!-- ABDM Alignment -->
-    <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">ABDM Alignment & Commitment</h2>
-                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                        We are working with the ABDM Sandbox to ensure VDocs is fully aligned with India's digital health standards. Every feature is designed with 'privacy by design' principles.
-                    </p>
-                    <div class="space-y-4">
-                        <div class="flex items-start space-x-4">
-                            <div class="flex-shrink-0">
-                                <div class="w-10 h-10 rounded-xl bg-primary-100 flex items-center justify-center">
-                                    <i class="fas fa-lock text-primary-600"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-lg mb-2 text-gray-900">Sandbox Compliance</h3>
-                                <p class="text-gray-600">Currently undergoing ABDM sandbox testing for M1 and M3 compliance.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="flex-shrink-0">
-                                <div class="w-10 h-10 rounded-xl bg-primary-100 flex items-center justify-center">
-                                    <i class="fas fa-lock text-primary-600"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-lg mb-2 text-gray-900">Privacy by Design</h3>
-                                <p class="text-gray-600">Built from the ground up with patient privacy as the foundation.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200">
-                    <div class="text-center">
-                        <div class="w-20 h-20 rounded-2xl bg-primary-100 flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-certificate text-primary-600 text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">Future Direction</h3>
-                        <p class="text-gray-600">
-                            As India's digital health ecosystem grows, VDocs will continue to evolve to give patients greater control, insights, and seamless integration within the ABDM framework.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Transparency Note -->
-    <section class="py-16 health-gradient">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-gray-900 mb-6">Transparency & Accountability</h2>
-            <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                Transparency and accountability are at the heart of VDocs. We believe in being clear about how we handle your data and what you can expect from our platform.
-            </p>
-            <div class="flex flex-wrap justify-center gap-6 mt-8">
-                <a href="privacy-policy.html" class="text-primary-600 hover:text-primary-700 font-medium">Privacy Policy</a>
-                <a href="terms-of-service.html" class="text-primary-600 hover:text-primary-700 font-medium">Terms of Service</a>
-                <a href="contact_us.html" class="text-primary-600 hover:text-primary-700 font-medium">Contact Us</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-primary-900 text-gray-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="md:col-span-2">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                            <i class="fas fa-file-medical-alt text-primary-600"></i>
-                        </div>
-                        <span class="text-xl font-bold text-white">VDocs</span>
-                    </div>
-                    <p class="text-gray-400 mb-6 max-w-md">
-                        Your personal digital health locker - securely store, manage, and gain insights from your medical records with complete patient control. ABDM compliant.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="https://www.instagram.com/vdocs.healthcare" class="text-gray-400 hover:text-white transition">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/company/vdocshealth/" class="text-gray-400 hover:text-white transition">
-                            <i class="fab fa-linkedin-in text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Company</h3>
-                    <div class="space-y-3">
-                        <a href="about_us.html" class="block text-gray-400 hover:text-white transition">About Us</a>
-                        <a href="contact_us.html" class="block text-gray-400 hover:text-white transition">Contact Us</a>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Legal</h3>
-                    <div class="space-y-3">
-                        <a href="privacy-policy.html" class="block text-gray-400 hover:text-white transition">Privacy Policy</a>
-                        <a href="terms-of-service.html" class="block text-gray-400 hover:text-white transition">Terms of Service</a>
-                        <a href="refund-policy.html" class="block text-gray-400 hover:text-white transition">Refund Policy</a>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-8 pt-8 border-t border-primary-800 text-center">
-                <p class="text-gray-500 text-sm">
-                    &copy; 2025 VD NextGen Digital Private Limited. All rights reserved.<br>
-                    VDocs is a patient-only Personal Health Record application compliant with ABDM guidelines.
-                </p>
             </div>
         </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </body>
+
 </html>
