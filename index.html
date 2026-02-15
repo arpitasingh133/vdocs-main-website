@@ -60,7 +60,7 @@
     </style>
 </head>
 
-<body class="bg-white antialiased" x-data="{ mobileOpen: false, showToast: false }">
+<body class="bg-white antialiased" x-data="vdocsApp()">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="hidden md:flex items-center space-x-4">
-                    <a href="https://vdocs.in/clinic"
+                    <a href="https://clinic.vdocs.in/clinic"
                         class="group relative inline-flex items-center justify-center px-6 py-2.5 bg-brand-dark text-white text-sm font-bold rounded-full overflow-hidden transition-all hover:bg-gray-800 hover:shadow-lg">
                         <span class="relative z-10 flex items-center gap-2">
                             I'm a clinic
@@ -141,10 +141,7 @@
                             class="inline-flex items-center justify-center px-8 py-4 bg-brand-blue text-white font-bold rounded-full hover:bg-blue-600 transition-all shadow-glow hover:shadow-xl hover:-translate-y-0.5">
                             Book Demo
                         </a>
-                        <a href="https://youtu.be/EXmsnXpu2DY" target="_blank"
-                            class="inline-flex items-center justify-center px-8 py-4 bg-gray-100 text-gray-900 font-bold rounded-full hover:bg-gray-200 transition-all">
-                            <i class="fas fa-play mr-2 text-xs"></i> Watch Demo
-                        </a>
+
                     </div>
                 </div>
                 <!-- Hero Visual -->
@@ -424,12 +421,11 @@
                 Join the waitlist to be among the first clinics to deploy VDocs Clinical Intelligence.
             </p>
 
-            <form class="max-w-md mx-auto space-y-4"
-                @submit.prevent="showToast = true; setTimeout(() => showToast = false, 3000)">
-                <input type="email" placeholder="Enter your work email" required
+            <form class="max-w-md mx-auto space-y-4" @submit.prevent="submitForm($event)">
+                <input type="email" name="email" placeholder="Enter your work email" required
                     class="w-full px-5 py-4 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition">
-                <button type="submit"
-                    class="w-full px-8 py-4 bg-brand-blue text-white font-bold rounded-lg hover:bg-blue-600 transition-all shadow-lg hover:shadow-glow">
+                <button type="submit" :disabled="isLoading" x-text="isLoading ? 'Submitting...' : 'Book Demo'"
+                    class="w-full px-8 py-4 bg-brand-blue text-white font-bold rounded-lg hover:bg-blue-600 transition-all shadow-lg hover:shadow-glow disabled:opacity-75 disabled:cursor-not-allowed">
                     Book Demo
                 </button>
             </form>
@@ -480,6 +476,42 @@
     <!-- Alpine.js -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script>
+        function vdocsApp() {
+            return {
+                mobileOpen: false,
+                showToast: false,
+                isLoading: false,
+                async submitForm(e) {
+                    this.isLoading = true;
+                    const form = e.target;
+                    const email = form.email.value.trim();
+
+                    try {
+                        const response = await fetch('https://script.google.com/macros/s/AKfycbz2MQAimA920iVaiQB8t28cg3-hwLXQhBVkQJ53qnbMRzaWt72xw4Fn0shd1IVstdU/exec', {
+                            method: 'POST',
+                            headers: { "Content-Type": "text/plain" },
+                            body: JSON.stringify({ email: email })
+                        });
+
+                        const result = await response.json();
+
+                        if (result.success) {
+                            this.showToast = true;
+                            form.reset();
+                            setTimeout(() => this.showToast = false, 3000);
+                        } else {
+                            alert('Submission failed: ' + (result.message || 'Unknown error'));
+                        }
+                    } catch (error) {
+                        console.error('Error!', error.message);
+                        alert('Something went wrong. Please try again.');
+                    } finally {
+                        this.isLoading = false;
+                    }
+                }
+            }
+        }
+
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
